@@ -1,0 +1,639 @@
+/* ===== Базовые стили ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.75;
+    color: #2c3e50;
+    background:
+        radial-gradient(circle at 0% 0%, rgba(102, 126, 234, 0.12), transparent 44%),
+        radial-gradient(circle at 100% 8%, rgba(118, 75, 162, 0.10), transparent 38%),
+        linear-gradient(135deg, #f7f8fc 0%, #eef1f7 100%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ===== Верхняя панель страниц новелл ===== */
+.topbar {
+    background: linear-gradient(135deg, #3d4a7a 0%, #5b3f7a 100%);
+    color: white;
+    padding: 16px 0;
+}
+
+.topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.site-name {
+    color: white;
+    text-decoration: none;
+    font-size: 1.02em;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+}
+
+.site-name:hover {
+    opacity: 0.85;
+}
+
+/* ===== Шапка страниц схем ===== */
+.page-header {
+    background: linear-gradient(135deg, #3d4a7a 0%, #5b3f7a 100%);
+    color: white;
+    padding: 16px 0;
+}
+
+.page-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Кнопка «Назад» в шапке схем — как в topbar */
+.page-header .back-link {
+    margin-top: 0;
+    padding: 8px 18px;
+}
+
+.page-header h1 {
+    font-size: 1.08em;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+}
+
+.page-header .subtitle {
+    font-size: 0.92em;
+    opacity: 0.82;
+    font-weight: 400;
+    margin: 0;
+    display: none;
+}
+
+/* ===== Кнопка «Назад» ===== */
+.back-link {
+    display: inline-block;
+    color: white;
+    text-decoration: none;
+    opacity: 0.92;
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 30px;
+    font-size: 0.92em;
+    transition: background 0.25s, transform 0.25s, opacity 0.25s;
+}
+
+.back-link:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.28);
+    transform: translateX(-4px);
+}
+
+.topbar .back-link {
+    margin-top: 0;
+    padding: 8px 18px;
+}
+
+/* ===== Основной контейнер ===== */
+main.container {
+    flex: 1 0 auto;
+    margin-top: 36px;
+    margin-bottom: 56px;
+}
+
+main.container {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 24px 70px rgba(30, 40, 80, 0.10);
+    max-width: 1120px;
+}
+
+/* ===== Двухколоночный макет страницы новеллы ===== */
+.novel-layout {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    gap: 52px;
+    padding: 48px;
+}
+
+.novel-sidebar {
+    position: sticky;
+    top: 24px;
+    align-self: start;
+}
+
+.novel-poster {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    display: block;
+    border-radius: 14px;
+    background: #eef1f7;
+    box-shadow: 0 18px 44px rgba(30, 40, 80, 0.22);
+}
+
+.poster-credit {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 0.78em;
+    letter-spacing: 0.03em;
+    color: #98a2b3;
+}
+
+.novel-content {
+    min-width: 0;
+}
+
+.novel-content h1 {
+    font-size: 2.35em;
+    line-height: 1.16;
+    color: #1f2a44;
+    margin-bottom: 8px;
+}
+
+.novel-subtitle {
+    color: #7b849c;
+    font-size: 1.02em;
+    margin-bottom: 30px;
+}
+
+/* ===== Заголовки разделов ===== */
+h2 {
+    color: #3f4f8a;
+    font-size: 1.32em;
+    line-height: 1.3;
+    margin-bottom: 18px;
+    padding-left: 14px;
+    border-left: 4px solid #667eea;
+}
+
+h3 {
+    color: #2c3e50;
+    font-size: 1.12em;
+    margin-bottom: 10px;
+}
+
+section {
+    margin-bottom: 34px;
+}
+
+section:last-child {
+    margin-bottom: 0;
+}
+
+/* ===== Общая информация ===== */
+.novel-info {
+    background: #f8f9fd;
+    border: 1px solid #e6e9f5;
+    border-radius: 14px;
+    padding: 26px 28px;
+}
+
+.novel-info p {
+    margin-bottom: 12px;
+    font-size: 1em;
+    line-height: 1.8;
+}
+
+.novel-info p:last-child {
+    margin-bottom: 0;
+}
+
+.novel-info strong {
+    color: #4a5aa8;
+}
+
+.novel-info ul {
+    margin: 0 0 14px 22px;
+    line-height: 1.8;
+}
+
+.novel-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.novel-meta-item {
+    background: white;
+    padding: 7px 15px;
+    border-radius: 20px;
+    font-size: 0.86em;
+    border: 1px solid #e6e9f5;
+}
+
+.novel-meta-item strong {
+    color: #4a5aa8;
+    margin-right: 5px;
+}
+
+/* ===== Список схем ===== */
+.schemas-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+    margin-top: 22px;
+}
+
+.schema-block {
+    background: white;
+    padding: 22px 24px;
+    border-radius: 14px;
+    border: 1px solid #e3e7f3;
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.schema-block:hover {
+    border-color: #8f9be8;
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(70, 86, 180, 0.16);
+}
+
+.schema-block h3 {
+    color: #3f4f8a;
+    margin-bottom: 10px;
+    font-size: 1.12em;
+}
+
+.schema-info {
+    font-size: 0.9em;
+    color: #667085;
+    line-height: 1.6;
+}
+
+.schema-info p {
+    margin-bottom: 5px;
+}
+
+.schema-info strong {
+    color: #3a4358;
+}
+
+/* ===== Страница схемы ===== */
+.schema-page {
+    padding: 52px 56px 56px;
+}
+
+.schema-page section {
+    margin-bottom: 44px;
+}
+
+.schema-page .novel-info {
+    margin-bottom: 0;
+}
+
+/* Информация о схеме — табличная карта */
+.schema-page .novel-info h2 {
+    margin-bottom: 22px;
+    border-left-width: 5px;
+}
+
+.schema-page .novel-info p {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 14px;
+    line-height: 1.55;
+    font-size: 1.04em;
+    padding: 10px 14px;
+    background: rgba(102, 126, 234, 0.04);
+    border-radius: 10px;
+    border: 1px solid rgba(102, 126, 234, 0.10);
+}
+
+.schema-page .novel-info p:last-child {
+    margin-bottom: 0;
+}
+
+.schema-page .novel-info strong {
+    display: inline-block;
+    min-width: 86px;
+    color: #4a5aa8;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    font-size: 0.94em;
+    text-transform: uppercase;
+    opacity: 0.82;
+}
+
+.schema-page .novel-info p.author-line {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.10), rgba(118, 75, 162, 0.08));
+    border-color: rgba(102, 126, 234, 0.24);
+    padding: 14px 18px;
+}
+
+.schema-page .novel-info p.author-line strong {
+    color: #3a4358;
+    font-size: 1.10em;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    opacity: 1;
+    min-width: 0;
+}
+
+/* Блок-схема */
+.schema-container {
+    background: white;
+    padding: 36px;
+    border-radius: 20px;
+    text-align: center;
+    border: 1px solid #e6e9f5;
+    box-shadow: 0 18px 48px rgba(30, 40, 80, 0.10);
+    transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+}
+
+.schema-container:hover {
+    transform: translateY(-4px);
+    border-color: #8f9be8;
+    box-shadow: 0 24px 56px rgba(70, 86, 180, 0.16);
+}
+
+.schema-link {
+    display: inline-block;
+    max-width: 100%;
+}
+
+.schema-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 14px;
+    box-shadow: 0 16px 44px rgba(30, 40, 80, 0.18);
+    cursor: zoom-in;
+    transition: transform 0.25s;
+}
+
+.schema-image:hover {
+    transform: scale(1.012);
+}
+
+.schema-note {
+    margin-top: 16px;
+    color: #7b849c;
+    font-size: 0.92em;
+    font-style: italic;
+}
+
+/* ===== Комментарий автора ===== */
+.author-comment {
+    background: linear-gradient(135deg, #fffaf0 0%, #fff4d9 100%);
+    padding: 26px 28px;
+    border-radius: 14px;
+    border-left: 4px solid #f0a92e;
+}
+
+.author-comment h2 {
+    border-left: none;
+    padding-left: 0;
+    color: #9a6a12;
+}
+
+.author-comment p {
+    font-style: italic;
+    color: #6b5b3e;
+    line-height: 1.8;
+}
+
+/* ===== Примечания ===== */
+.notes {
+    background: #f8f9fd;
+    padding: 26px 28px;
+    border-radius: 14px;
+    border: 1px solid #e6e9f5;
+}
+
+.notes ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.notes li {
+    padding: 10px 0 10px 26px;
+    border-bottom: 1px solid #e9ecf6;
+    font-size: 0.97em;
+    position: relative;
+}
+
+.notes li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
+}
+
+.notes li:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+
+/* ===== Цитата (blockquote) ===== */
+blockquote {
+    display: inline;
+    margin: 0;
+    padding: 0 8px;
+    border-left: 2px solid #d0d7e8;
+    color: #5a6478;
+    font-style: italic;
+}
+
+/* ===== Спойлер (inline) ===== */
+.spoiler-toggle {
+    display: inline;
+    cursor: pointer;
+    color: #667eea;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 3px;
+    font-weight: 500;
+}
+
+.spoiler-toggle:hover {
+    color: #4a5aa8;
+}
+
+.spoiler-content {
+    display: none;
+    color: #2c3e50;
+}
+
+.spoiler-content.visible {
+    display: inline;
+}
+
+.spoiler-toggle.hidden {
+    display: none;
+}
+
+/* ===== Подвал ===== */
+footer {
+    background: linear-gradient(135deg, #232b45 0%, #343b5c 100%);
+    color: #cfd4e6;
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.94em;
+    margin-top: auto;
+}
+
+footer p {
+    margin-bottom: 6px;
+}
+
+footer a {
+    color: #aeb8ff;
+    text-decoration: none;
+    transition: color 0.25s;
+}
+
+footer a:hover {
+    color: white;
+    text-decoration: underline;
+}
+
+footer .back-link {
+    margin-top: 8px;
+}
+
+/* ===== Адаптивность ===== */
+@media (max-width: 900px) {
+    .novel-layout {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 36px;
+    }
+
+    .novel-sidebar {
+        position: static;
+        max-width: 240px;
+    }
+
+    .schema-page {
+        padding: 34px 36px 38px;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 0 16px;
+    }
+
+    .topbar {
+        padding: 12px 0;
+    }
+
+    .topbar-inner {
+        gap: 10px;
+    }
+
+    .site-name {
+        font-size: 0.9em;
+    }
+
+    .page-header {
+        padding: 12px 0;
+    }
+
+    .page-header .container {
+        gap: 10px;
+    }
+
+    .page-header h1 {
+        font-size: 0.94em;
+    }
+
+    main.container {
+        margin-top: 22px;
+        margin-bottom: 34px;
+        border-radius: 16px;
+    }
+
+    .novel-layout {
+        padding: 24px 22px 30px;
+        gap: 24px;
+    }
+
+    .novel-sidebar {
+        max-width: 190px;
+    }
+
+    .novel-content h1 {
+        font-size: 1.7em;
+    }
+
+    .novel-info {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.18em;
+    }
+
+    .schemas-list {
+        grid-template-columns: 1fr;
+    }
+
+    .schema-page {
+        padding: 28px 22px 32px;
+    }
+
+    .schema-container {
+        padding: 20px;
+    }
+
+    .schema-note {
+        font-size: 0.86em;
+    }
+
+    .schema-page .novel-info p {
+        flex-direction: column;
+        gap: 4px;
+        padding: 8px 10px;
+    }
+
+    .schema-page .novel-info p.author-line strong {
+        font-size: 1.02em;
+    }
+}
+
+/* ===== Анимация появления ===== */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.novel-layout,
+.schema-page {
+    animation: fadeInUp 0.45s ease-out;
+}

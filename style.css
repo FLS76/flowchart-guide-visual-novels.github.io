@@ -1,0 +1,342 @@
+/* ===== Базовые стили ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
+    line-height: 1.6;
+    color: #2c3e50;
+    background:
+        radial-gradient(circle at 0% 0%, rgba(102, 126, 234, 0.10), transparent 42%),
+        radial-gradient(circle at 100% 0%, rgba(118, 75, 162, 0.10), transparent 38%),
+        #f4f6fb;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ===== Шапка ===== */
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 58px 0 52px;
+    position: relative;
+    overflow: hidden;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 82% 18%, rgba(255, 255, 255, 0.18), transparent 45%);
+    pointer-events: none;
+}
+
+header .container {
+    position: relative;
+    z-index: 1;
+}
+
+header h1 {
+    font-size: 2.35em;
+    line-height: 1.2;
+    margin-bottom: 14px;
+    text-shadow: 0 2px 10px rgba(20, 20, 50, 0.18);
+}
+
+header .subtitle {
+    font-size: 1.12em;
+    opacity: 0.92;
+}
+
+/* ===== Вкладки ===== */
+.tabs {
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 14px rgba(30, 40, 80, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.tabs .container {
+    display: flex;
+    gap: 0;
+}
+
+.tab {
+    flex: 1;
+    padding: 19px 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.98em;
+    font-weight: 500;
+    color: #667085;
+    transition: color 0.25s, background 0.25s;
+    border-bottom: 3px solid transparent;
+}
+
+.tab:hover {
+    color: #667eea;
+    background: #f7f8fd;
+}
+
+.tab.active {
+    color: #5b6ad0;
+    border-bottom-color: #667eea;
+}
+
+/* ===== Контент вкладок ===== */
+.tab-content {
+    display: none;
+    padding: 44px 0 20px;
+    min-height: 60vh;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.tab-content h2 {
+    color: #2c3e50;
+    margin-bottom: 16px;
+    font-size: 1.7em;
+}
+
+.tab-note {
+    color: #667085;
+    margin-bottom: 14px;
+}
+
+.tab-note a {
+    color: #5b6ad0;
+}
+
+/* ===== О проекте ===== */
+.about-content {
+    background: white;
+    padding: 34px 36px;
+    border-radius: 16px;
+    box-shadow: 0 10px 34px rgba(30, 40, 80, 0.07);
+    max-width: 900px;
+}
+
+.about-content h3 {
+    color: #3f4f8a;
+    margin: 26px 0 10px;
+    font-size: 1.18em;
+}
+
+.about-content h3:first-child {
+    margin-top: 0;
+}
+
+.about-content p {
+    margin-bottom: 12px;
+    line-height: 1.8;
+}
+
+.about-content ul {
+    margin: 0 0 14px 22px;
+    line-height: 1.8;
+}
+
+.about-content li {
+    margin-bottom: 4px;
+}
+
+.about-content a {
+    color: #5b6ad0;
+}
+
+/* ===== Сделанные схемы: постер + название ===== */
+.novels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(176px, 1fr));
+    gap: 26px;
+    margin-top: 28px;
+}
+
+.novel-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(30, 40, 80, 0.08);
+    transition: transform 0.25s, box-shadow 0.25s;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+.novel-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 16px 34px rgba(50, 60, 110, 0.16);
+}
+
+.novel-card-image {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    display: block;
+    background: #eef1f7;
+}
+
+.novel-card-title {
+    display: block;
+    padding: 13px 14px 15px;
+    font-size: 0.94em;
+    font-weight: 600;
+    line-height: 1.35;
+    color: #2c3e50;
+    transition: color 0.2s;
+}
+
+.novel-card:hover .novel-card-title {
+    color: #5b6ad0;
+}
+
+/* ===== Новеллы, не требующие схем ===== */
+.no-schema-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 26px;
+    max-width: 900px;
+}
+
+.no-schema-row {
+    display: grid;
+    grid-template-columns: 92px minmax(0, 1fr);
+    gap: 22px;
+    align-items: center;
+    background: white;
+    border-radius: 14px;
+    padding: 14px 20px 14px 14px;
+    box-shadow: 0 6px 20px rgba(30, 40, 80, 0.07);
+}
+
+.no-schema-poster {
+    width: 92px;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+    background: #eef1f7;
+}
+
+.no-schema-body h3 {
+    color: #2c3e50;
+    font-size: 1.08em;
+    line-height: 1.35;
+    margin-bottom: 4px;
+}
+
+.no-schema-reason {
+    color: #667085;
+    font-size: 0.92em;
+}
+
+/* ===== В планах ===== */
+.plan-list {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 34px rgba(30, 40, 80, 0.07);
+    padding: 24px 30px 24px 50px;
+    max-width: 900px;
+    margin-bottom: 16px;
+}
+
+.plan-list li {
+    padding: 6px 0;
+    border-bottom: 1px solid #f0f2f8;
+}
+
+.plan-list li:last-child {
+    border-bottom: none;
+}
+
+/* ===== Подвал ===== */
+footer {
+    margin-top: auto;
+    background: linear-gradient(135deg, #232b45 0%, #343b5c 100%);
+    color: #cfd4e6;
+    padding: 34px 0;
+    text-align: center;
+    font-size: 0.94em;
+}
+
+footer p {
+    margin-bottom: 6px;
+}
+
+footer a {
+    color: #aeb8ff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* ===== Адаптивность ===== */
+@media (max-width: 768px) {
+    header {
+        padding: 44px 0 38px;
+    }
+
+    header h1 {
+        font-size: 1.75em;
+    }
+
+    header .subtitle {
+        font-size: 1em;
+    }
+
+    .tabs .container {
+        flex-wrap: wrap;
+    }
+
+    .tab {
+        flex: none;
+        width: 50%;
+        text-align: center;
+        padding: 14px 10px;
+        font-size: 0.92em;
+    }
+
+    .tab-content {
+        padding-top: 32px;
+    }
+
+    .about-content {
+        padding: 24px;
+    }
+
+    .novels-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 18px;
+    }
+
+    .no-schema-row {
+        grid-template-columns: 74px minmax(0, 1fr);
+        gap: 16px;
+        padding: 12px;
+    }
+
+    .no-schema-poster {
+        width: 74px;
+    }
+}

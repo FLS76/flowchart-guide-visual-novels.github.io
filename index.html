@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прохождения визуальных новелл в виде блок-схем</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="assets/favicon.png">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Прохождения визуальных новелл в виде блок-схем</h1>
+            <p class="subtitle">Руководства по прохождению визуальных новелл в виде блок-схем</p>
+        </div>
+    </header>
+
+    <nav class="tabs">
+        <div class="container">
+            <button class="tab active" data-tab="about">О проекте</button>
+            <button class="tab" data-tab="completed">Сделано</button>
+            <button class="tab" data-tab="plans">В планах</button>
+            <button class="tab" data-tab="no-needed">Не требуют схем</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Вкладка: О проекте -->
+        <section id="about" class="tab-content active">
+            <h2>О проекте</h2>
+            <div class="about-content">
+                <h3>О проекте</h3>
+                <p>
+                    Здесь я собираю в виде каталога прохождения визуальных новелл в виде блок-схем,
+                    которые сделал сам. Я стараюсь, чтобы схема была не просто сводкой выбора,
+                    а удобным путеводителем по сюжету: где ответвляются ветки, как добраться до нужной
+                    концовки, какие сцены можно пропустить без ущерба.
+                </p>
+
+                <p>
+                    Сейчас на сайте только мои работы. Но я задаюсь вопросом: стоит ли расширять
+                    каталог и добавлять чужие блок-схемы того же типа? Если у вас есть мнение —
+                    напишите в <a href="https://github.com/FLS76/flowchart-guide-visual-novels.github.io/discussions" target="_blank" rel="noopener">Discussions</a> на GitHub.
+                </p>
+
+                <h3>Как пользоваться</h3>
+                <p>
+                    На главной странице переключайтесь между вкладками — «Сделано», «В планах»
+                    и «Не требуют схем». Вкладка «Сделано» содержит ссылки на страницы новелл,
+                    где доступны блок-схемы. Вкладка «В планах» — новеллы, для которых схемы
+                    ещё создаются. Вкладка «Не требуют схем» — кинетические новеллы или те,
+                    где исчерпывающая схема уже есть внутри игры.
+                </p>
+                <p>
+                    Я планирую делать блок-схемы на все новеллы, которые пройду. Полный список
+                    ожидаемых прохождений — в моём <a href="https://vndb.org/u247207" target="_blank" rel="noopener">профиле на VNDB</a>.
+                </p>
+
+                <h3>Мои ресурсы</h3>
+                <p>
+                    <a href="https://ru.squarefaction.com/member/u108729/blog/21498-prohozhdeniya-shemy-vizualnyh-novell" target="_blank" rel="noopener">Мой изначальный блог с прохождениями</a><br>
+                    <a href="https://ru.squarefaction.com/member/u108729" target="_blank" rel="noopener">Профиль на Square Faction</a><br>
+                    <a href="https://vndb.org/u247207" target="_blank" rel="noopener">Профиль на VNDB</a><br>
+                    <a href="https://gamefaqs.gamespot.com/community/Gold2" target="_blank" rel="noopener">Профиль на GameFAQs</a><br>
+                    <a href="https://github.com/FLS76" target="_blank" rel="noopener">Профиль на GitHub</a>
+                </p>
+
+                <h3>Использование материалов</h3>
+                <p>
+                    Блок-схемы защищены авторским правом. Использование возможно только
+                    с разрешения автора.
+                </p>
+                <p>
+                    Обложки новелл взяты из базы VNDB и сохранены локально. Права на обложки
+                    принадлежат издателям и правообладателям; по запросу правообладателя
+                    изображение будет удалено.
+                </p>
+            </div>
+        </section>
+
+        <!-- Вкладка: Сделано -->
+        <section id="completed" class="tab-content">
+            <h2>Сделанные схемы</h2>
+            <div class="novels-grid">
+                <a class="novel-card" href="novels/sharin-himawari/index.html">
+                    <img src="assets/posters/sharin-himawari.jpg" alt="Sharin no Kuni, Himawari no Shoujo" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">Sharin no Kuni, Himawari no Shoujo</span>
+                </a>
+
+                <a class="novel-card" href="novels/sharin-yuukyuu/index.html">
+                    <img src="assets/posters/sharin-yuukyuu.jpg" alt="Sharin no Kuni, Yuukyuu no Shounenshoujo" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">Sharin no Kuni, Yuukyuu no Shounenshoujo</span>
+                </a>
+
+                <a class="novel-card" href="novels/ever17/index.html">
+                    <img src="assets/posters/ever17.jpg" alt="Ever17: Out of the Infinity" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">Ever17: Out of the Infinity</span>
+                </a>
+
+                <a class="novel-card" href="novels/wanko/index.html">
+                    <img src="assets/posters/wanko.jpg" alt="Wanko to Kurasou" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">Wanko to Kurasou</span>
+                </a>
+
+                <a class="novel-card" href="novels/if-heart-wings/index.html">
+                    <img src="assets/posters/if-heart-wings.jpg" alt="If my heart had wings" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">If my heart had wings</span>
+                </a>
+
+                <a class="novel-card" href="novels/phoenix-wright/index.html">
+                    <img src="assets/posters/phoenix-wright.jpg" alt="Phoenix Wright: Ace Attorney" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">Phoenix Wright: Ace Attorney</span>
+                </a>
+
+                <a class="novel-card" href="novels/phoenix-wright-justice/index.html">
+                    <img src="assets/posters/phoenix-wright-justice.jpg" alt="Phoenix Wright: Ace Attorney — Justice for All" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">Phoenix Wright: Ace Attorney — Justice for All</span>
+                </a>
+
+                <a class="novel-card" href="novels/phoenix-wright-trials/index.html">
+                    <img src="assets/posters/phoenix-wright-trials.jpg" alt="Phoenix Wright: Ace Attorney — Trials and Tribulations" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">Phoenix Wright: Ace Attorney — Trials and Tribulations</span>
+                </a>
+
+                <a class="novel-card" href="novels/remember11/index.html">
+                    <img src="assets/posters/remember11.jpg" alt="Remember11: The Age of Infinity" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">Remember11: The Age of Infinity</span>
+                </a>
+
+                <a class="novel-card" href="novels/neko-catboys/index.html">
+                    <img src="assets/posters/neko-catboys.jpg" alt="Nekopara: Catboys Paradise" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">Nekopara: Catboys Paradise</span>
+                </a>
+
+                <a class="novel-card" href="novels/neko-vol4/index.html">
+                    <img src="assets/posters/neko-vol4.jpg" alt="Nekopara Vol. 4" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">Nekopara Vol. 4</span>
+                </a>
+
+                <a class="novel-card" href="novels/amneya28/index.html">
+                    <img src="assets/posters/amneya28.jpg" alt="Амнея28: две вечности" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">Амнея28: две вечности</span>
+                </a>
+
+                <a class="novel-card" href="novels/angels-scaly-wings/index.html">
+                    <img src="assets/posters/angels-scaly-wings.jpg" alt="Angels with Scaly Wings" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">Angels with Scaly Wings</span>
+                </a>
+
+                <a class="novel-card" href="novels/9-nine-1/index.html">
+                    <img src="assets/posters/9-nine-1.jpg" alt="9 -Nine- Kokonotsu Kokonoka Kokonoiro" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">9 -Nine- Kokonotsu Kokonoka Kokonoiro</span>
+                </a>
+
+                <a class="novel-card" href="novels/9-nine-2/index.html">
+                    <img src="assets/posters/9-nine-2.jpg" alt="9 -Nine- Sorairo Sorauta Soranooto" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">9 -Nine- Sorairo Sorauta Soranooto</span>
+                </a>
+
+                <a class="novel-card" href="novels/snoot-game/index.html">
+                    <img src="assets/posters/snoot-game.jpg" alt="Snoot Game" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">Snoot Game</span>
+                </a>
+
+                <a class="novel-card" href="novels/i-wani-hug/index.html">
+                    <img src="assets/posters/i-wani-hug.jpg" alt="I Wani Hug that Gator!" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">I Wani Hug that Gator!</span>
+                </a>
+
+                <a class="novel-card" href="novels/atri/index.html">
+                    <img src="assets/posters/atri.jpg" alt="ATRI -My Dear Moments-" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">ATRI -My Dear Moments-</span>
+                </a>
+
+                <a class="novel-card" href="novels/ginka/index.html">
+                    <img src="assets/posters/ginka.jpg" alt="GINKA" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">GINKA</span>
+                </a>
+
+                <a class="novel-card" href="novels/himawari/index.html">
+                    <img src="assets/posters/himawari.jpg" alt="Himawari" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">Himawari</span>
+                </a>
+
+                <a class="novel-card" href="novels/wolf-girl/index.html">
+                    <img src="assets/posters/wolf-girl.jpg" alt="Kemono Musume no Sodatekata" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">Kemono Musume no Sodatekata</span>
+                </a>
+
+                <a class="novel-card" href="novels/neko-after/index.html">
+                    <img src="assets/posters/neko-after.jpg" alt="Nekopara After" class="novel-card-image" loading="lazy">
+                    <span class="novel-card-title">Nekopara After</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Вкладка: В планах -->
+        <section id="plans" class="tab-content">
+            <h2>Схемы в планах</h2>
+            <p class="tab-note">Новеллы, для которых ещё не созданы блок-схемы. Статус обновляется по мере готовности.</p>
+            <ul class="plan-list">
+                <li>Kara No Shoujo</li>
+                <li>Cartagra ~Tsuki Kurui no Yamai~</li>
+                <li>Danganronpa: Trigger Happy Havoc</li>
+                <li>Danganronpa 2: Goodbye Despair</li>
+                <li>Danganronpa V3: Killing Harmony (?)</li>
+                <li>The Fruit of Grisaia (Grisaia no Kajitsu)</li>
+                <li>Little Busters!</li>
+                <li>Kusari (?)</li>
+                <li>Dasoku (?)</li>
+                <li>Yuki Koi Melt (?)</li>
+                <li>Novena Diabolos</li>
+                <li>If My Heart Had Wings -Flight Diary- (?)</li>
+                <li>Zero Escape: 9 Hours 9 People 9 Doors</li>
+                <li>Extreme Escape Adventure: Good People Die</li>
+                <li>Zero Escape 3</li>
+                <li>Root Double -Before Crime * After Days- (?)</li>
+                <li>Subarashiki Hibi ~Furenzoku Sonzai~</li>
+                <li>The Sekimeiya: Spun Glass (?)</li>
+            </ul>
+            <p class="tab-note">Обозначение «(?)» — я безуспешно надеюсь на перевод на русский язык… желательно ручной.</p>
+            <p class="tab-note">Полный список на <a href="https://vndb.org/u247207" target="_blank" rel="noopener">VNDB профиля автора</a>.</p>
+        </section>
+
+        <!-- Вкладка: Не требуют схем -->
+        <section id="no-needed" class="tab-content">
+            <h2>Новеллы, не требующие схем</h2>
+            <p class="tab-note">Кинетические новеллы (без выборов) или новеллы, где исчерпывающая блок-схема уже есть в самой игре.</p>
+            <div class="no-schema-list">
+                <article class="no-schema-row">
+                    <img src="assets/posters/nekopara-extra.jpg" alt="Nekopara: Extra" class="no-schema-poster" loading="lazy">
+                    <div class="no-schema-body">
+                        <h3>Nekopara: Extra</h3>
+                        <p class="no-schema-reason">Кинетическая, без выборов</p>
+                    </div>
+                </article>
+
+                <article class="no-schema-row">
+                    <img src="assets/posters/nekopara-vol0.jpg" alt="Nekopara Vol. 0" class="no-schema-poster" loading="lazy">
+                    <div class="no-schema-body">
+                        <h3>Nekopara Vol. 0</h3>
+                        <p class="no-schema-reason">Кинетическая, без выборов</p>
+                    </div>
+                </article>
+
+                <article class="no-schema-row">
+                    <img src="assets/posters/nekopara-vol1.jpg" alt="Nekopara" class="no-schema-poster" loading="lazy">
+                    <div class="no-schema-body">
+                        <h3>Nekopara</h3>
+                        <p class="no-schema-reason">Кинетическая, без выборов</p>
+                    </div>
+                </article>
+
+                <article class="no-schema-row">
+                    <img src="assets/posters/nekopara-vol2.jpg" alt="Nekopara Vol. 2" class="no-schema-poster" loading="lazy">
+                    <div class="no-schema-body">
+                        <h3>Nekopara Vol. 2</h3>
+                        <p class="no-schema-reason">Кинетическая, без выборов</p>
+                    </div>
+                </article>
+
+                <article class="no-schema-row">
+                    <img src="assets/posters/nekopara-vol3.jpg" alt="Nekopara Vol. 3" class="no-schema-poster" loading="lazy">
+                    <div class="no-schema-body">
+                        <h3>Nekopara Vol. 3</h3>
+                        <p class="no-schema-reason">Кинетическая, без выборов</p>
+                    </div>
+                </article>
+
+                <article class="no-schema-row">
+                    <img src="assets/posters/will-wonderful-world.jpg" alt="WILL: A Wonderful World" class="no-schema-poster" loading="lazy">
+                    <div class="no-schema-body">
+                        <h3>WILL: A Wonderful World</h3>
+                        <p class="no-schema-reason">Новелла сама является блок-схемой</p>
+                    </div>
+                </article>
+
+                <article class="no-schema-row">
+                    <img src="assets/posters/9-nine-3.jpg" alt="9 -Nine- Haruiro Harukoi Harunokaze" class="no-schema-poster" loading="lazy">
+                    <div class="no-schema-body">
+                        <h3>9 -Nine- Haruiro Harukoi Harunokaze</h3>
+                        <p class="no-schema-reason">Кинетическая, одинарные кнопки</p>
+                    </div>
+                </article>
+
+                <article class="no-schema-row">
+                    <img src="assets/posters/9-nine-4.jpg" alt="9 -Nine- Yukiiro Yukihana Yukinoato" class="no-schema-poster" loading="lazy">
+                    <div class="no-schema-body">
+                        <h3>9 -Nine- Yukiiro Yukihana Yukinoato</h3>
+                        <p class="no-schema-reason">Кинетическая, есть схема в новелле</p>
+                    </div>
+                </article>
+
+                <article class="no-schema-row">
+                    <img src="assets/posters/9-nine-5.jpg" alt="9 -Nine- Shinshou" class="no-schema-poster" loading="lazy">
+                    <div class="no-schema-body">
+                        <h3>9 -Nine- Shinshou</h3>
+                        <p class="no-schema-reason">Есть схема в новелле</p>
+                    </div>
+                </article>
+
+                <article class="no-schema-row">
+                    <img src="assets/posters/stella-of-the-end.jpg" alt="Stella of The End" class="no-schema-poster" loading="lazy">
+                    <div class="no-schema-body">
+                        <h3>Stella of The End</h3>
+                        <p class="no-schema-reason">Кинетическая, без выборов</p>
+                    </div>
+                </article>
+
+                <article class="no-schema-row">
+                    <img src="assets/posters/island.jpg" alt="ISLAND" class="no-schema-poster" loading="lazy">
+                    <div class="no-schema-body">
+                        <h3>ISLAND</h3>
+                        <p class="no-schema-reason">Исчерпывающая схема в новелле</p>
+                    </div>
+                </article>
+
+                <article class="no-schema-row">
+                    <img src="assets/posters/eden.jpg" alt="Eden: They Were Only Two on the Planet" class="no-schema-poster" loading="lazy">
+                    <div class="no-schema-body">
+                        <h3>Eden: They Were Only Two on the Planet</h3>
+                        <p class="no-schema-reason">Кинетическая, без выборов</p>
+                    </div>
+                </article>
+
+                <article class="no-schema-row">
+                    <img src="assets/posters/harmonia.jpg" alt="Harmonia" class="no-schema-poster" loading="lazy">
+                    <div class="no-schema-body">
+                        <h3>Harmonia</h3>
+                        <p class="no-schema-reason">Кинетическая, без выборов</p>
+                    </div>
+                </article>
+
+                <article class="no-schema-row">
+                    <img src="assets/posters/stella-of-the-end-diary.jpg" alt="Stella of The End: Diary of a Faint Hope" class="no-schema-poster" loading="lazy">
+                    <div class="no-schema-body">
+                        <h3>Stella of The End: Diary of a Faint Hope</h3>
+                        <p class="no-schema-reason">Кинетическая, одна одинарная кнопка</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Автор схем: <a href="https://ru.squarefaction.com/member/u108729" target="_blank" rel="noopener">проверщик (NRFX)</a></p>
+            <p>
+                <a href="https://ru.squarefaction.com/member/u108729" target="_blank" rel="noopener">Профиль на Square Faction</a> ·
+                <a href="https://vndb.org/u247207" target="_blank" rel="noopener">Профиль на VNDB</a> ·
+                <a href="https://gamefaqs.gamespot.com/community/Gold2" target="_blank" rel="noopener">Профиль на GameFAQs</a> ·
+                <a href="https://github.com/FLS76" target="_blank" rel="noopener">Профиль на GitHub</a>
+            </p>
+
+    <script src="script.js"></script>
+</body>
+</html>

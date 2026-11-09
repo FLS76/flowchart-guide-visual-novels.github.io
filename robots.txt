@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://flowchart-guide-visual-novels.github.io/sitemap.xml
