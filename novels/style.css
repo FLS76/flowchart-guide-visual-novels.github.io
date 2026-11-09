@@ -8,7 +8,7 @@
 
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.75;
     color: #1a1a2e;
     background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
@@ -32,11 +32,48 @@ body::before {
     z-index: -1;
 }
 
+body.light-theme {
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+    color: #2c3e50;
+}
+
+body.light-theme::before {
+    background: 
+        radial-gradient(ellipse at 20% 20%, rgba(102, 126, 234, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(240, 147, 251, 0.05) 0%, transparent 50%);
+}
+
 .container {
     width: 100%;
     max-width: 1120px;
     margin: 0 auto;
     padding: 0 24px;
+}
+
+/* ===== Кнопка смены темы ===== */
+.theme-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    font-size: 1.2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    margin-left: 20px;
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(180deg);
+}
+
+body.light-theme .theme-toggle {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
 }
 
 /* ===== Верхняя панель страниц новелл ===== */
@@ -46,6 +83,10 @@ body::before {
     padding: 18px 0;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.light-theme .topbar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 .topbar-inner {
@@ -145,6 +186,12 @@ main.container {
         inset 0 1px 0 rgba(255, 255, 255, 0.4);
     max-width: 1120px;
     border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body.light-theme main.container {
+    background: white;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.05);
 }
 
 /* ===== Двухколоночный макет страницы новеллы ===== */
@@ -609,6 +656,127 @@ footer .back-link {
     margin-top: 8px;
 }
 
+/* ===== Светлая тема для страниц новелл ===== */
+body.light-theme .topbar .back-link {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+body.light-theme .topbar .back-link:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+body.light-theme .novel-content h1 {
+    color: #1a1a2e;
+}
+
+body.light-theme h2 {
+    color: #2c3e50;
+}
+
+body.light-theme .novel-info {
+    background: #f8f9fd;
+    border-color: #e6e9f5;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .novel-info p strong {
+    color: #3f4f8a;
+}
+
+body.light-theme .novel-info p a {
+    color: #667eea;
+}
+
+body.light-theme .schema-block {
+    background: white;
+    border-color: #e6e9f5;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .schema-block:hover {
+    border-color: #8f9be8;
+    box-shadow: 0 16px 40px rgba(70, 86, 180, 0.12);
+}
+
+body.light-theme .schema-block-title {
+    color: #2c3e50;
+}
+
+body.light-theme .schema-block-meta {
+    color: #667085;
+}
+
+body.light-theme .schema-container {
+    background: white;
+    border-color: #e6e9f5;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .schema-container:hover {
+    border-color: #8f9be8;
+    box-shadow: 0 24px 60px rgba(70, 86, 180, 0.12);
+}
+
+body.light-theme .schema-image {
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+}
+
+body.light-theme .author-comment {
+    background: #fffaf0;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .author-comment h2 {
+    color: #9a6a12;
+}
+
+body.light-theme .author-comment p {
+    color: #6b5b3e;
+}
+
+body.light-theme .notes {
+    background: #f8f9fd;
+    border-color: #e6e9f5;
+}
+
+body.light-theme .notes li {
+    border-bottom-color: #e9ecf6;
+    color: #2c3e50;
+}
+
+body.light-theme blockquote {
+    border-left-color: #667eea;
+    color: #5a6478;
+}
+
+body.light-theme .spoiler-toggle {
+    color: #667eea;
+}
+
+body.light-theme .spoiler-toggle:hover {
+    color: #4a5aa8;
+}
+
+body.light-theme .spoiler-content {
+    color: #2c3e50;
+}
+
+body.light-theme footer {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+}
+
+body.light-theme footer a {
+    color: #aeb8ff;
+}
+
+body.light-theme footer .back-link {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
 /* ===== Адаптивность ===== */
 @media (max-width: 900px) {
     .novel-layout {
@@ -708,6 +876,139 @@ footer .back-link {
     .schema-page .novel-info p.author-line strong {
         font-size: 1.02em;
     }
+}
+
+/* ===== Стили для light-theme на страницах новелл ===== */
+body.light-theme .topbar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+body.light-theme .page-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+body.light-theme .site-name {
+    color: white;
+}
+
+body.light-theme .back-link {
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+body.light-theme .back-link:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+body.light-theme .novel-content h1 {
+    color: #1a1a2e;
+}
+
+body.light-theme h2 {
+    color: #2c3e50;
+}
+
+body.light-theme .novel-info {
+    background: #f8f9fd;
+    border-color: #e6e9f5;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .novel-info p strong {
+    color: #3f4f8a;
+}
+
+body.light-theme .novel-info p a {
+    color: #667eea;
+}
+
+body.light-theme .schema-block {
+    background: white;
+    border-color: #e6e9f5;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .schema-block:hover {
+    border-color: #8f9be8;
+    box-shadow: 0 16px 40px rgba(70, 86, 180, 0.12);
+}
+
+body.light-theme .schema-block-title {
+    color: #2c3e50;
+}
+
+body.light-theme .schema-block-meta {
+    color: #667085;
+}
+
+body.light-theme .schema-container {
+    background: white;
+    border-color: #e6e9f5;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+}
+
+body.light-theme .schema-container:hover {
+    border-color: #8f9be8;
+    box-shadow: 0 24px 60px rgba(70, 86, 180, 0.12);
+}
+
+body.light-theme .schema-image {
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+}
+
+body.light-theme .author-comment {
+    background: #fffaf0;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+body.light-theme .author-comment h2 {
+    color: #9a6a12;
+}
+
+body.light-theme .author-comment p {
+    color: #6b5b3e;
+}
+
+body.light-theme .notes {
+    background: #f8f9fd;
+    border-color: #e6e9f5;
+}
+
+body.light-theme .notes li {
+    border-bottom-color: #e9ecf6;
+    color: #2c3e50;
+}
+
+body.light-theme blockquote {
+    border-left-color: #667eea;
+    color: #5a6478;
+}
+
+body.light-theme .spoiler-toggle {
+    color: #667eea;
+}
+
+body.light-theme .spoiler-toggle:hover {
+    color: #4a5aa8;
+}
+
+body.light-theme .spoiler-content {
+    color: #2c3e50;
+}
+
+body.light-theme footer {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+}
+
+body.light-theme footer a {
+    color: #aeb8ff;
+}
+
+body.light-theme footer .back-link {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* ===== Анимация появления ===== */

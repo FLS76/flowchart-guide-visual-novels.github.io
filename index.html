@@ -6,6 +6,7 @@
     <title>Прохождения визуальных новелл в виде блок-схем</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="assets/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -21,6 +22,7 @@
             <button class="tab" data-tab="completed">Сделано</button>
             <button class="tab" data-tab="plans">В планах</button>
             <button class="tab" data-tab="no-needed">Не требуют схем</button>
+            <button class="theme-toggle" id="themeToggle" title="Сменить тему">🌙</button>
         </div>
     </nav>
 
@@ -353,5 +355,23 @@
             </p>
 
     <script src="script.js"></script>
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+        
+        // Проверяем сохранённую тему
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'light') {
+            body.classList.add('light-theme');
+            themeToggle.textContent = '☀️';
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-theme');
+            const isLight = body.classList.contains('light-theme');
+            themeToggle.textContent = isLight ? '☀️' : '🌙';
+            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+        });
+    </script>
 </body>
 </html>
