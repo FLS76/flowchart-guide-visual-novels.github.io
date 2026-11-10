@@ -16,13 +16,13 @@ body {
 }
 
 html.light-theme body,
-html.light-theme body, html.light-theme body, body.light-theme {
+body.light-theme {
     background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 50%, #ffe082 100%);
     color: #4a3728;
 }
 
 html.light-theme body::before,
-html.light-theme body, html.light-theme body, body.light-theme::before {
+body.light-theme::before {
     background: 
         radial-gradient(ellipse at 20% 20%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
         radial-gradient(ellipse at 80% 80%, rgba(240, 147, 251, 0.08) 0%, transparent 50%);
