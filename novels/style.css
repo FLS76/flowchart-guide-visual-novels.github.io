@@ -52,55 +52,32 @@ body.light-theme::before {
 
 /* ===== Кнопка смены темы ===== */
 .theme-toggle {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 8px;
     padding: 10px 16px;
     cursor: pointer;
     font-family: inherit;
     font-size: 0.95em;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.85);
     transition: all 0.3s ease;
     margin-left: 12px;
-    position: relative;
-    overflow: hidden;
-}
-
-.theme-toggle::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 0;
-    height: 100%;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.25), rgba(118, 75, 162, 0.25));
-    transition: width 0.3s ease, left 0.3s ease;
-    z-index: -1;
-}
-
-.theme-toggle:hover::before {
-    width: 100%;
-    left: 0;
 }
 
 .theme-toggle:hover {
-    color: rgba(255, 255, 255, 0.95);
-    border-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.35);
+    color: white;
 }
 
 body.light-theme .theme-toggle {
-    background: rgba(139, 94, 60, 0.08);
-    border-color: rgba(139, 94, 60, 0.2);
+    background: transparent;
+    border-color: rgba(139, 94, 60, 0.4);
     color: #8b5e3c;
 }
 
-body.light-theme .theme-toggle::before {
-    background: linear-gradient(135deg, rgba(139, 94, 60, 0.15), rgba(109, 76, 46, 0.15));
-}
-
 body.light-theme .theme-toggle:hover {
-    background: rgba(139, 94, 60, 0.15);
+    border-color: rgba(139, 94, 60, 0.7);
     color: #6d4c2e;
 }
 

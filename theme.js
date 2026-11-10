@@ -1,33 +1,40 @@
-// Переключатель темы (светлая/тёмная)
+// Переключатель темы (светлая/тёмная) - глобальное сохранение
 (function() {
     'use strict';
     
-    function initTheme() {
-        const body = document.body;
+    // Применяем сохранённую тему сразу при загрузке (до рендеринга)
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        document.documentElement.classList.add('light-theme');
+    }
+    
+    // Ждём загрузки DOM
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', function() {
+            applyTheme();
+        });
+    } else {
+        applyTheme();
+    }
+    
+    function applyTheme() {
         const themeToggle = document.getElementById('themeToggle');
-        
         if (!themeToggle) return;
         
-        // Проверяем сохранённую тему
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'light') {
-            body.classList.add('light-theme');
-            themeToggle.textContent = '☀️';
-        }
+        // Проверяем текущую тему
+        const isLight = document.documentElement.classList.contains('light-theme');
+        themeToggle.textContent = isLight ? '☀️' : '🌙';
         
         themeToggle.addEventListener('click', function(e) {
             e.preventDefault();
-            body.classList.toggle('light-theme');
-            const isLight = body.classList.contains('light-theme');
-            themeToggle.textContent = isLight ? '☀️' : '🌙';
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            e.stopPropagation();
+            
+            const html = document.documentElement;
+            html.classList.toggle('light-theme');
+            const nowLight = html.classList.contains('light-theme');
+            
+            themeToggle.textContent = nowLight ? '☀️' : '🌙';
+            localStorage.setItem('theme', nowLight ? 'light' : 'dark');
         });
-    }
-    
-    // Запускаем сразу, если DOM уже загружен
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initTheme);
-    } else {
-        initTheme();
     }
 })();
