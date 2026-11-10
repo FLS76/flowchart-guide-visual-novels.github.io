@@ -207,15 +207,15 @@ body.light-theme .tab-note a {
 
 /* ===== О проекте ===== */
 .about-content {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(30, 28, 60, 0.95);
     backdrop-filter: blur(20px);
     padding: 40px 44px;
     border-radius: 24px;
     box-shadow: 
         0 20px 60px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     max-width: 900px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .about-content h3 {
@@ -263,19 +263,19 @@ body.light-theme .about-content a {
 }
 
 .novel-card {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(30, 28, 60, 0.95);
     backdrop-filter: blur(20px);
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 
         0 10px 40px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     text-decoration: none;
     color: inherit;
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     position: relative;
 }
 
@@ -355,15 +355,15 @@ body.light-theme .novel-card:hover .novel-card-title {
     grid-template-columns: 100px minmax(0, 1fr);
     gap: 24px;
     align-items: center;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(30, 28, 60, 0.95);
     backdrop-filter: blur(20px);
     border-radius: 18px;
     padding: 16px 24px 16px 16px;
     box-shadow: 
         0 8px 32px rgba(0, 0, 0, 0.15),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .no-schema-row:hover {
@@ -405,16 +405,16 @@ body.light-theme .no-schema-reason {
 
 /* ===== В планах ===== */
 .plan-list {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(30, 28, 60, 0.95);
     backdrop-filter: blur(20px);
     border-radius: 20px;
     box-shadow: 
         0 15px 50px rgba(0, 0, 0, 0.2),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     padding: 28px 36px 28px 56px;
     max-width: 900px;
     margin-bottom: 18px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .plan-list li {
@@ -453,15 +453,15 @@ footer a:hover {
 
 /* ===== Кнопка смены темы ===== */
 .theme-toggle {
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 8px;
     padding: 10px 16px;
     cursor: pointer;
     font-family: inherit;
     font-size: 0.95em;
     font-weight: 500;
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.75);
     transition: all 0.3s ease;
     margin-left: 12px;
     position: relative;
@@ -475,7 +475,7 @@ footer a:hover {
     left: 50%;
     width: 0;
     height: 100%;
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.25), rgba(118, 75, 162, 0.25));
     transition: width 0.3s ease, left 0.3s ease;
     z-index: -1;
 }
@@ -486,23 +486,23 @@ footer a:hover {
 }
 
 .theme-toggle:hover {
-    color: white;
-    border-color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.95);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
 body.light-theme .theme-toggle {
-    background: rgba(102, 126, 234, 0.08);
-    border-color: rgba(102, 126, 234, 0.2);
-    color: #5b6ad0;
+    background: rgba(139, 94, 60, 0.08);
+    border-color: rgba(139, 94, 60, 0.2);
+    color: #8b5e3c;
 }
 
 body.light-theme .theme-toggle::before {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+    background: linear-gradient(135deg, rgba(139, 94, 60, 0.15), rgba(109, 76, 46, 0.15));
 }
 
 body.light-theme .theme-toggle:hover {
-    background: rgba(102, 126, 234, 0.15);
-    color: #4a5aa8;
+    background: rgba(139, 94, 60, 0.15);
+    color: #6d4c2e;
 }
 
 /* ===== Стили для светлой темы ===== */
@@ -543,13 +543,15 @@ body.light-theme .tab-content h2 {
 }
 
 body.light-theme .about-content {
-    background: white;
+    background: rgba(255, 252, 245, 0.98);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    border-color: rgba(139, 94, 60, 0.2);
 }
 
 body.light-theme .novel-card {
-    background: white;
+    background: rgba(255, 252, 245, 0.98);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    border-color: rgba(139, 94, 60, 0.2);
 }
 
 body.light-theme .novel-card:hover {
@@ -565,8 +567,9 @@ body.light-theme .novel-card:hover .novel-card-title {
 }
 
 body.light-theme .no-schema-row {
-    background: white;
+    background: rgba(255, 252, 245, 0.98);
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+    border-color: rgba(139, 94, 60, 0.2);
 }
 
 body.light-theme .no-schema-row:hover {
@@ -578,8 +581,9 @@ body.light-theme .no-schema-body h3 {
 }
 
 body.light-theme .plan-list {
-    background: white;
+    background: rgba(255, 252, 245, 0.98);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    border-color: rgba(139, 94, 60, 0.2);
 }
 
 body.light-theme footer {
