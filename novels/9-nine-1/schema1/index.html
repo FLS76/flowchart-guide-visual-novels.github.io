@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../../style.css">
     <link rel="icon" type="image/png" href="../../../assets/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script>if(localStorage.getItem("theme")==="light")document.documentElement.classList.add("light-theme");</script>
+<script>try{if(localStorage.getItem("theme")==="light")document.documentElement.classList.add("light-theme");if(localStorage.getItem("lang")==="en")document.documentElement.lang="en";}catch(e){}</script>
 </head>
 <body>
     <header class="page-header">
@@ -39,7 +39,7 @@
         <section class="schema">
             <h2>Блок-схема</h2>
             <div class="schema-container">
-                <a href="schema.png" target="_blank" rel="noopener" class="schema-link"><a href="schema.png" target="_blank" rel="noopener" class="schema-link"><img src="schema.png" alt="Блок-схема прохождений 9 -Nine- Эпизод 1" class="schema-image"></a></a>
+                <a href="schema.png" target="_blank" rel="noopener" class="schema-link"><img src="schema.png" alt="Блок-схема прохождений 9 -Nine- Эпизод 1" class="schema-image"></a>
                 
             </div>
         </section>
@@ -53,6 +53,7 @@
             <p><a href="../index.html" class="back-link">← Назад к списку схем</a></p>
         </div>
     </footer>
+<script src="../../../i18n.js"></script>
 <script src="../../../theme.js"></script>
 </body>
 </html>

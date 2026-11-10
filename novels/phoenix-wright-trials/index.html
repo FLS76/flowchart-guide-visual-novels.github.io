@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" type="image/png" href="../../assets/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<script>if(localStorage.getItem("theme")==="light")document.documentElement.classList.add("light-theme");</script>
+<script>try{if(localStorage.getItem("theme")==="light")document.documentElement.classList.add("light-theme");if(localStorage.getItem("lang")==="en")document.documentElement.lang="en";}catch(e){}</script>
 </head>
 <body>
     <header class="topbar">
@@ -54,6 +54,7 @@
             <p><a href="../../index.html" class="back-link">← Назад к списку</a></p>
         </div>
     </footer>
+<script src="../../i18n.js"></script>
 <script src="../../theme.js"></script>
 </body>
 </html>

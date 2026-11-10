@@ -5,12 +5,10 @@
     box-sizing: border-box;
 }
 
-
-
 body {
     font-family: 'Montserrat', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.75;
-    color: #1a1a2e;
+    color: #e8e8f0;
     background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
     min-height: 100vh;
     display: flex;
@@ -30,19 +28,6 @@ body::before {
         radial-gradient(ellipse at 50% 50%, rgba(76, 190, 243, 0.08) 0%, transparent 70%);
     pointer-events: none;
     z-index: -1;
-}
-
-html.light-theme body,
-body.light-theme {
-    background: linear-gradient(135deg, #fff9e6 0%, #ffeaa7 50%, #fdcb6e 100%);
-    color: #5d4e37;
-}
-
-html.light-theme body::before,
-body.light-theme::before {
-    background: 
-        radial-gradient(ellipse at 20% 20%, rgba(102, 126, 234, 0.08) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 80%, rgba(240, 147, 251, 0.05) 0%, transparent 50%);
 }
 
 .container {
@@ -72,17 +57,10 @@ body.light-theme::before {
     color: white;
 }
 
-html.light-theme body,
-body.light-theme .theme-toggle {
-    background: transparent;
-    border-color: rgba(139, 94, 60, 0.4);
-    color: #8b5e3c;
-}
-
-html.light-theme body,
-body.light-theme .theme-toggle:hover {
-    border-color: rgba(139, 94, 60, 0.7);
-    color: #6d4c2e;
+.lang-toggle {
+    min-width: 54px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
 }
 
 /* ===== Верхняя панель страниц новелл ===== */
@@ -94,11 +72,6 @@ body.light-theme .theme-toggle:hover {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-html.light-theme body,
-body.light-theme .topbar {
-    background: linear-gradient(135deg, #d4750a 0%, #b85e0a 100%);
-}
-
 .topbar-inner {
     display: flex;
     align-items: center;
@@ -108,15 +81,20 @@ body.light-theme .topbar {
 
 .topbar-inner .site-name {
     order: 1;
-}
-
-.topbar-inner .theme-toggle {
-    order: 2;
-    margin-left: auto;
+    margin-right: auto;
 }
 
 .topbar-inner .back-link {
+    order: 2;
+}
+
+.topbar-inner .lang-toggle {
     order: 3;
+}
+
+.topbar-inner .theme-toggle {
+    order: 4;
+    margin-left: 0;
 }
 
 .site-name {
@@ -141,15 +119,10 @@ body.light-theme .topbar {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-html.light-theme body,
-body.light-theme .page-header {
-    background: linear-gradient(135deg, #d4750a 0%, #b85e0a 100%);
-}
-
 .page-header .container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 20px;
 }
 
@@ -157,16 +130,21 @@ body.light-theme .page-header {
     order: 1;
 }
 
-.page-header .container > .theme-toggle {
-    order: 2;
-}
-
 .page-header .container > .subtitle {
-    order: 3;
+    order: 2;
+    margin-right: auto;
 }
 
 .page-header .container > .back-link {
+    order: 3;
+}
+
+.page-header .container > .lang-toggle {
     order: 4;
+}
+
+.page-header .container > .theme-toggle {
+    order: 5;
 }
 
 /* Кнопка «Назад» в шапке схем — как в topbar */
@@ -189,8 +167,9 @@ body.light-theme .page-header {
     opacity: 0.82;
     font-weight: 400;
     margin: 0;
-    display: none;
-    order: 3;
+    display: block;
+    order: 2;
+    white-space: nowrap;
 }
 
 /* ===== Кнопка «Назад» ===== */
@@ -231,24 +210,6 @@ body.light-theme .page-header {
     border-color: rgba(255, 255, 255, 0.25);
 }
 
-html.light-theme body,
-body.light-theme .back-link {
-    background: rgba(102, 126, 234, 0.08);
-    border-color: rgba(102, 126, 234, 0.2);
-    color: #5b6ad0;
-}
-
-html.light-theme body,
-body.light-theme .back-link::before {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
-}
-
-html.light-theme body,
-body.light-theme .back-link:hover {
-    background: rgba(102, 126, 234, 0.15);
-    color: #4a5aa8;
-}
-
 .topbar .back-link {
     margin-top: 0;
     padding: 8px 18px;
@@ -270,13 +231,6 @@ main.container {
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
     max-width: 1120px;
     border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-html.light-theme body,
-body.light-theme main.container {
-    background: rgba(255, 252, 245, 0.98);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-    border-color: rgba(139, 94, 60, 0.2);
 }
 
 /* ===== Двухколоночный макет страницы новеллы ===== */
@@ -331,20 +285,10 @@ body.light-theme main.container {
     letter-spacing: -0.02em;
 }
 
-html.light-theme body,
-body.light-theme .novel-content h1 {
-    color: #4a3728;
-}
-
 .novel-subtitle {
     color: #b8b8d0;
     font-size: 1.02em;
     margin-bottom: 30px;
-}
-
-html.light-theme body,
-body.light-theme .novel-subtitle {
-    color: #6d5c4a;
 }
 
 /* ===== Заголовки разделов ===== */
@@ -359,20 +303,10 @@ h2 {
     font-weight: 700;
 }
 
-html.light-theme body,
-body.light-theme h2 {
-    color: #4a3728;
-}
-
 h3 {
     color: #b8c8ff;
     font-size: 1.12em;
     margin-bottom: 10px;
-}
-
-html.light-theme body,
-body.light-theme h3 {
-    color: #8b5e3c;
 }
 
 section {
@@ -395,12 +329,6 @@ section:last-child {
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-html.light-theme body,
-body.light-theme .novel-info {
-    background: rgba(255, 252, 245, 0.98);
-    border-color: rgba(139, 94, 60, 0.2);
-}
-
 .novel-info p {
     margin-bottom: 12px;
     font-size: 1em;
@@ -413,11 +341,6 @@ body.light-theme .novel-info {
 
 .novel-info strong {
     color: #a8b8ff;
-}
-
-html.light-theme body,
-body.light-theme .novel-info strong {
-    color: #8b5e3c;
 }
 
 .novel-info ul {
@@ -441,21 +364,9 @@ body.light-theme .novel-info strong {
     color: #b8b8d0;
 }
 
-html.light-theme body,
-body.light-theme .novel-meta-item {
-    background: rgba(255, 252, 245, 0.98);
-    border-color: rgba(139, 94, 60, 0.2);
-    color: #6d5c4a;
-}
-
 .novel-meta-item strong {
     color: #a8b8ff;
     margin-right: 5px;
-}
-
-html.light-theme body,
-body.light-theme .novel-meta-item strong {
-    color: #8b5e3c;
 }
 
 /* ===== Список схем ===== */
@@ -481,12 +392,6 @@ body.light-theme .novel-meta-item strong {
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
-}
-
-html.light-theme body,
-body.light-theme .schema-block {
-    background: rgba(255, 252, 245, 0.98);
-    border-color: rgba(139, 94, 60, 0.2);
 }
 
 .schema-block::before {
@@ -520,20 +425,10 @@ body.light-theme .schema-block {
     font-size: 1.12em;
 }
 
-html.light-theme body,
-body.light-theme .schema-block h3 {
-    color: #8b5e3c;
-}
-
 .schema-info {
     font-size: 0.9em;
     color: #b8b8d0;
     line-height: 1.6;
-}
-
-html.light-theme body,
-body.light-theme .schema-info {
-    color: #6d5c4a;
 }
 
 .schema-info p {
@@ -542,11 +437,6 @@ body.light-theme .schema-info {
 
 .schema-info strong {
     color: #a8b8ff;
-}
-
-html.light-theme body,
-body.light-theme .schema-info strong {
-    color: #8b5e3c;
 }
 
 /* ===== Страница схемы ===== */
@@ -582,13 +472,6 @@ body.light-theme .schema-info strong {
     color: #b8b8d0;
 }
 
-html.light-theme body,
-body.light-theme .schema-page .novel-info p {
-    background: rgba(255, 252, 245, 0.98);
-    border-color: rgba(139, 94, 60, 0.2);
-    color: #6d5c4a;
-}
-
 .schema-page .novel-info p:last-child {
     margin-bottom: 0;
 }
@@ -604,21 +487,10 @@ body.light-theme .schema-page .novel-info p {
     opacity: 0.82;
 }
 
-html.light-theme body,
-body.light-theme .schema-page .novel-info strong {
-    color: #8b5e3c;
-}
-
 .schema-page .novel-info p.author-line {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.12));
     border-color: rgba(102, 126, 234, 0.3);
     padding: 14px 18px;
-}
-
-html.light-theme body,
-body.light-theme .schema-page .novel-info p.author-line {
-    background: linear-gradient(135deg, rgba(139, 94, 60, 0.1), rgba(109, 76, 46, 0.08));
-    border-color: rgba(139, 94, 60, 0.25);
 }
 
 .schema-page .novel-info p.author-line strong {
@@ -697,11 +569,6 @@ body.light-theme .schema-page .novel-info p.author-line {
     font-style: italic;
 }
 
-html.light-theme body,
-body.light-theme .schema-note {
-    color: #6d5c4a;
-}
-
 /* ===== Комментарий автора ===== */
 .author-comment {
     background: rgba(60, 55, 40, 0.95);
@@ -713,12 +580,6 @@ body.light-theme .schema-note {
     box-shadow: 
         0 10px 40px rgba(0, 0, 0, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.1);
-}
-
-html.light-theme body,
-body.light-theme .author-comment {
-    background: rgba(255, 250, 240, 0.98);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
 }
 
 .author-comment h2 {
@@ -741,12 +602,6 @@ body.light-theme .author-comment {
     border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-html.light-theme body,
-body.light-theme .notes {
-    background: rgba(255, 252, 245, 0.98);
-    border-color: rgba(139, 94, 60, 0.2);
-}
-
 .notes ul {
     list-style: none;
     padding-left: 0;
@@ -758,12 +613,6 @@ body.light-theme .notes {
     font-size: 0.97em;
     position: relative;
     color: #b8b8d0;
-}
-
-html.light-theme body,
-body.light-theme .notes li {
-    border-bottom-color: rgba(139, 94, 60, 0.2);
-    color: #6d5c4a;
 }
 
 .notes li::before {
@@ -779,7 +628,6 @@ body.light-theme .notes li {
     padding-bottom: 0;
 }
 
-
 /* ===== Цитата (blockquote) ===== */
 blockquote {
     display: inline;
@@ -788,12 +636,6 @@ blockquote {
     border-left: 2px solid #667eea;
     color: #b8b8d0;
     font-style: italic;
-}
-
-html.light-theme body,
-body.light-theme blockquote {
-    border-left-color: #8b5e3c;
-    color: #6d5c4a;
 }
 
 /* ===== Спойлер (inline) ===== */
@@ -807,28 +649,13 @@ body.light-theme blockquote {
     font-weight: 500;
 }
 
-html.light-theme body,
-body.light-theme .spoiler-toggle {
-    color: #d4750a;
-}
-
 .spoiler-toggle:hover {
     color: #c8d8ff;
-}
-
-html.light-theme body,
-body.light-theme .spoiler-toggle:hover {
-    color: #b8650a;
 }
 
 .spoiler-content {
     display: none;
     color: #e8e8f0;
-}
-
-html.light-theme body,
-body.light-theme .spoiler-content {
-    color: #4a3728;
 }
 
 .spoiler-content.visible {
@@ -851,11 +678,6 @@ footer {
     box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
 }
 
-html.light-theme body,
-body.light-theme footer {
-    background: linear-gradient(135deg, #8b5e3c 0%, #6d4c2e 100%);
-}
-
 footer p {
     margin-bottom: 6px;
 }
@@ -866,144 +688,13 @@ footer a {
     transition: color 0.25s;
 }
 
-html.light-theme body,
-body.light-theme footer a {
-    color: #d4750a;
-}
-
 footer a:hover {
     color: white;
     text-decoration: underline;
 }
 
-html.light-theme body,
-body.light-theme footer a:hover {
-    color: #b8650a;
-}
-
 footer .back-link {
     margin-top: 8px;
-}
-
-/* ===== Светлая тема для страниц новелл ===== */
-html.light-theme body,
-body.light-theme .topbar .back-link {
-    background: rgba(139, 94, 60, 0.08);
-    border-color: rgba(139, 94, 60, 0.2);
-    color: #8b5e3c;
-}
-
-html.light-theme body,
-body.light-theme .topbar .back-link:hover {
-    background: rgba(139, 94, 60, 0.15);
-    color: #6d4c2e;
-}
-
-html.light-theme body,
-body.light-theme .schema-block {
-    background: white;
-    border-color: #e6e9f5;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
-}
-
-html.light-theme body,
-body.light-theme .schema-block:hover {
-    border-color: #8f9be8;
-    box-shadow: 0 16px 40px rgba(70, 86, 180, 0.12);
-}
-
-html.light-theme body,
-body.light-theme .schema-block-title {
-    color: #2c3e50;
-}
-
-html.light-theme body,
-body.light-theme .schema-block-meta {
-    color: #667085;
-}
-
-html.light-theme body,
-body.light-theme .schema-container {
-    background: white;
-    border-color: #e6e9f5;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
-}
-
-html.light-theme body,
-body.light-theme .schema-container:hover {
-    border-color: #8f9be8;
-    box-shadow: 0 24px 60px rgba(70, 86, 180, 0.12);
-}
-
-html.light-theme body,
-body.light-theme .schema-image {
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
-}
-
-html.light-theme body,
-body.light-theme .author-comment {
-    background: #fffaf0;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-}
-
-html.light-theme body,
-body.light-theme .author-comment h2 {
-    color: #9a6a12;
-}
-
-html.light-theme body,
-body.light-theme .author-comment p {
-    color: #6b5b3e;
-}
-
-html.light-theme body,
-body.light-theme .notes {
-    background: #f8f9fd;
-    border-color: #e6e9f5;
-}
-
-html.light-theme body,
-body.light-theme .notes li {
-    border-bottom-color: #e9ecf6;
-    color: #2c3e50;
-}
-
-html.light-theme body,
-body.light-theme blockquote {
-    border-left-color: #667eea;
-    color: #5a6478;
-}
-
-html.light-theme body,
-body.light-theme .spoiler-toggle {
-    color: #667eea;
-}
-
-html.light-theme body,
-body.light-theme .spoiler-toggle:hover {
-    color: #4a5aa8;
-}
-
-html.light-theme body,
-body.light-theme .spoiler-content {
-    color: #2c3e50;
-}
-
-html.light-theme body,
-body.light-theme footer {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-}
-
-html.light-theme body,
-body.light-theme footer a {
-    color: #aeb8ff;
-}
-
-html.light-theme body,
-body.light-theme footer .back-link {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    border-color: rgba(255, 255, 255, 0.2);
 }
 
 /* ===== Адаптивность ===== */
@@ -1034,7 +725,22 @@ body.light-theme footer .back-link {
     }
 
     .topbar-inner {
+        flex-wrap: wrap;
         gap: 10px;
+    }
+
+    .topbar-inner .site-name {
+        flex: 1 1 100%;
+        white-space: normal;
+    }
+
+    .topbar-inner .lang-toggle {
+        margin-left: auto;
+    }
+
+    .topbar-inner .theme-toggle,
+    .page-header .theme-toggle {
+        margin-left: 0;
     }
 
     .site-name {
@@ -1046,11 +752,17 @@ body.light-theme footer .back-link {
     }
 
     .page-header .container {
+        flex-wrap: wrap;
         gap: 10px;
     }
 
     .page-header h1 {
         font-size: 0.94em;
+        white-space: normal;
+    }
+
+    .page-header .subtitle {
+        white-space: normal;
     }
 
     main.container {
@@ -1107,156 +819,6 @@ body.light-theme footer .back-link {
     }
 }
 
-/* ===== Стили для light-theme на страницах новелл ===== */
-html.light-theme body,
-body.light-theme .site-name {
-    color: white;
-}
-
-html.light-theme body,
-body.light-theme .page-header h1 {
-    color: white;
-}
-
-html.light-theme body,
-body.light-theme .page-header .subtitle {
-    color: rgba(255, 255, 255, 0.9);
-}
-
-html.light-theme body,
-body.light-theme .novel-content h1 {
-    color: #1a1a2e;
-}
-
-html.light-theme body,
-body.light-theme h2 {
-    color: #2c3e50;
-}
-
-html.light-theme body,
-body.light-theme .novel-info {
-    background: #f8f9fd;
-    border-color: #e6e9f5;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-}
-
-html.light-theme body,
-body.light-theme .novel-info p strong {
-    color: #3f4f8a;
-}
-
-html.light-theme body,
-body.light-theme .novel-info p a {
-    color: #667eea;
-}
-
-html.light-theme body,
-body.light-theme .schema-block {
-    background: white;
-    border-color: #e6e9f5;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
-}
-
-html.light-theme body,
-body.light-theme .schema-block:hover {
-    border-color: #8f9be8;
-    box-shadow: 0 16px 40px rgba(70, 86, 180, 0.12);
-}
-
-html.light-theme body,
-body.light-theme .schema-block-title {
-    color: #2c3e50;
-}
-
-html.light-theme body,
-body.light-theme .schema-block-meta {
-    color: #667085;
-}
-
-html.light-theme body,
-body.light-theme .schema-container {
-    background: white;
-    border-color: #e6e9f5;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
-}
-
-html.light-theme body,
-body.light-theme .schema-container:hover {
-    border-color: #8f9be8;
-    box-shadow: 0 24px 60px rgba(70, 86, 180, 0.12);
-}
-
-html.light-theme body,
-body.light-theme .schema-image {
-    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
-}
-
-html.light-theme body,
-body.light-theme .author-comment {
-    background: #fffaf0;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-}
-
-html.light-theme body,
-body.light-theme .author-comment h2 {
-    color: #9a6a12;
-}
-
-html.light-theme body,
-body.light-theme .author-comment p {
-    color: #6b5b3e;
-}
-
-html.light-theme body,
-body.light-theme .notes {
-    background: #f8f9fd;
-    border-color: #e6e9f5;
-}
-
-html.light-theme body,
-body.light-theme .notes li {
-    border-bottom-color: #e9ecf6;
-    color: #2c3e50;
-}
-
-html.light-theme body,
-body.light-theme blockquote {
-    border-left-color: #667eea;
-    color: #5a6478;
-}
-
-html.light-theme body,
-body.light-theme .spoiler-toggle {
-    color: #667eea;
-}
-
-html.light-theme body,
-body.light-theme .spoiler-toggle:hover {
-    color: #4a5aa8;
-}
-
-html.light-theme body,
-body.light-theme .spoiler-content {
-    color: #2c3e50;
-}
-
-html.light-theme body,
-body.light-theme footer {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-}
-
-html.light-theme body,
-body.light-theme footer a {
-    color: #aeb8ff;
-}
-
-html.light-theme body,
-body.light-theme footer .back-link {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    border-color: rgba(255, 255, 255, 0.2);
-}
-
 /* ===== Анимация появления ===== */
 @keyframes fadeInUp {
     from {
@@ -1272,4 +834,230 @@ body.light-theme footer .back-link {
 .novel-layout,
 .schema-page {
     animation: fadeInUp 0.45s ease-out;
+}
+
+/* ===== Светлая тема: солнечная ===== */
+html.light-theme body {
+    background: linear-gradient(135deg, #fff9e6 0%, #ffeaa7 50%, #fdcb6e 100%);
+    color: #5d4e37;
+}
+
+html.light-theme body::before {
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(255, 214, 102, 0.32) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, rgba(253, 203, 110, 0.25) 0%, transparent 55%);
+}
+
+html.light-theme .topbar,
+html.light-theme .page-header {
+    background: linear-gradient(135deg, #d4750a 0%, #b85e0a 100%);
+}
+
+html.light-theme .site-name,
+html.light-theme .page-header h1 {
+    color: #ffffff;
+}
+
+html.light-theme .page-header .subtitle {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+html.light-theme .topbar .theme-toggle,
+html.light-theme .page-header .theme-toggle {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+}
+
+html.light-theme .topbar .theme-toggle:hover,
+html.light-theme .page-header .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.75);
+    color: #ffffff;
+}
+
+html.light-theme .topbar .back-link,
+html.light-theme .page-header .back-link {
+    background: transparent;
+    border-color: rgba(255, 255, 255, 0.35);
+    color: rgba(255, 255, 255, 0.92);
+}
+
+html.light-theme .topbar .back-link::before,
+html.light-theme .page-header .back-link::before {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08));
+}
+
+html.light-theme .topbar .back-link:hover,
+html.light-theme .page-header .back-link:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.7);
+    color: #ffffff;
+}
+
+html.light-theme main.container {
+    background: rgba(255, 252, 245, 0.98);
+    box-shadow: 0 15px 50px rgba(139, 94, 60, 0.14);
+    border-color: rgba(139, 94, 60, 0.2);
+}
+
+html.light-theme .novel-content h1 {
+    color: #4a3728;
+}
+
+html.light-theme .novel-subtitle {
+    color: #6d5c4a;
+}
+
+html.light-theme h2 {
+    color: #4a3728;
+}
+
+html.light-theme h3 {
+    color: #8b5e3c;
+}
+
+html.light-theme .novel-info {
+    background: rgba(255, 252, 245, 0.98);
+    border-color: rgba(139, 94, 60, 0.2);
+    box-shadow: 0 8px 30px rgba(139, 94, 60, 0.08);
+}
+
+html.light-theme .novel-info strong,
+html.light-theme .novel-info p strong {
+    color: #8b5e3c;
+}
+
+html.light-theme .novel-info p a {
+    color: #b8650a;
+}
+
+html.light-theme .novel-meta-item {
+    background: rgba(255, 252, 245, 0.98);
+    border-color: rgba(139, 94, 60, 0.2);
+    color: #6d5c4a;
+}
+
+html.light-theme .novel-meta-item strong {
+    color: #8b5e3c;
+}
+
+html.light-theme .schema-block {
+    background: rgba(255, 252, 245, 0.98);
+    border-color: rgba(139, 94, 60, 0.2);
+    box-shadow: 0 6px 24px rgba(139, 94, 60, 0.1);
+}
+
+html.light-theme .schema-block:hover {
+    border-color: rgba(184, 101, 10, 0.5);
+    box-shadow: 0 16px 40px rgba(139, 94, 60, 0.16);
+}
+
+html.light-theme .schema-block h3 {
+    color: #8b5e3c;
+}
+
+html.light-theme .schema-info {
+    color: #6d5c4a;
+}
+
+html.light-theme .schema-info strong {
+    color: #8b5e3c;
+}
+
+html.light-theme .schema-page .novel-info p {
+    background: rgba(255, 252, 245, 0.98);
+    border-color: rgba(139, 94, 60, 0.2);
+    color: #6d5c4a;
+}
+
+html.light-theme .schema-page .novel-info strong {
+    color: #8b5e3c;
+}
+
+html.light-theme .schema-page .novel-info p.author-line {
+    background: linear-gradient(135deg, rgba(212, 117, 10, 0.1), rgba(184, 94, 10, 0.07));
+    border-color: rgba(139, 94, 60, 0.25);
+}
+
+html.light-theme .schema-note {
+    color: #6d5c4a;
+}
+
+html.light-theme .author-comment {
+    background: rgba(255, 250, 240, 0.98);
+    box-shadow: 0 10px 40px rgba(139, 94, 60, 0.1);
+}
+
+html.light-theme .author-comment h2 {
+    color: #9a6a12;
+}
+
+html.light-theme .author-comment p {
+    color: #6b5b3e;
+}
+
+html.light-theme .notes {
+    background: rgba(255, 252, 245, 0.98);
+    border-color: rgba(139, 94, 60, 0.2);
+}
+
+html.light-theme .notes li {
+    border-bottom-color: rgba(139, 94, 60, 0.2);
+    color: #6d5c4a;
+}
+
+html.light-theme blockquote {
+    border-left-color: #8b5e3c;
+    color: #6d5c4a;
+}
+
+html.light-theme .spoiler-toggle {
+    color: #b8650a;
+}
+
+html.light-theme .spoiler-toggle:hover {
+    color: #8b3e0a;
+}
+
+html.light-theme .spoiler-content {
+    color: #4a3728;
+}
+
+html.light-theme .schema-container {
+    background: rgba(255, 252, 245, 0.98);
+    border-color: rgba(139, 94, 60, 0.2);
+    box-shadow: 0 15px 50px rgba(139, 94, 60, 0.12);
+}
+
+html.light-theme .schema-container:hover {
+    border-color: rgba(184, 101, 10, 0.5);
+    box-shadow: 0 24px 60px rgba(139, 94, 60, 0.16);
+}
+
+html.light-theme .schema-image {
+    box-shadow: 0 12px 36px rgba(139, 94, 60, 0.18);
+}
+
+html.light-theme footer {
+    background: linear-gradient(135deg, #8b5e3c 0%, #6d4c2e 100%);
+}
+
+html.light-theme footer a {
+    color: #ffd28a;
+}
+
+html.light-theme footer a:hover {
+    color: #ffffff;
+}
+
+html.light-theme footer .back-link {
+    background: transparent;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.35);
+}
+
+html.light-theme footer .back-link:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.7);
 }

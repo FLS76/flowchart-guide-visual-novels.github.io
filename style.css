@@ -15,19 +15,6 @@ body {
     flex-direction: column;
 }
 
-html.light-theme body,
-body.light-theme {
-    background: linear-gradient(135deg, #fff9e6 0%, #ffeaa7 50%, #fdcb6e 100%);
-    color: #5d4e37;
-}
-
-html.light-theme body::before,
-body.light-theme::before {
-    background: 
-        radial-gradient(ellipse at 20% 20%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 80%, rgba(240, 147, 251, 0.08) 0%, transparent 50%);
-}
-
 body::before {
     content: '';
     position: fixed;
@@ -118,7 +105,22 @@ header .subtitle {
 
 .tabs .container {
     display: flex;
+    align-items: center;
     gap: 0;
+}
+
+.tabs .tab {
+    align-self: stretch;
+}
+
+.tabs .theme-toggle {
+    flex: 0 0 auto;
+}
+
+.lang-toggle {
+    min-width: 54px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
 }
 
 .tab {
@@ -186,25 +188,13 @@ header .subtitle {
     font-size: 1.7em;
 }
 
-html.light-theme body, html.light-theme body, body.light-theme .tab-content h2 {
-    color: #4a3728;
-}
-
 .tab-note {
     color: #b8b8d0;
     margin-bottom: 14px;
 }
 
-html.light-theme body, html.light-theme body, body.light-theme .tab-note {
-    color: #6d5c4a;
-}
-
 .tab-note a {
     color: #a8b8ff;
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .tab-note a {
-    color: #d4750a;
 }
 
 /* ===== О проекте ===== */
@@ -224,10 +214,6 @@ html.light-theme body, html.light-theme body, body.light-theme .tab-note a {
     color: #b8c8ff;
     margin: 26px 0 10px;
     font-size: 1.18em;
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .about-content h3 {
-    color: #8b5e3c;
 }
 
 .about-content h3:first-child {
@@ -250,10 +236,6 @@ html.light-theme body, html.light-theme body, body.light-theme .about-content h3
 
 .about-content a {
     color: #a8b8ff;
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .about-content a {
-    color: #d4750a;
 }
 
 /* ===== Сделанные схемы: постер + название ===== */
@@ -335,14 +317,6 @@ html.light-theme body, html.light-theme body, body.light-theme .about-content a 
     transform: scale(1.02);
 }
 
-html.light-theme body, html.light-theme body, body.light-theme .novel-card-title {
-    color: #4a3728;
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .novel-card:hover .novel-card-title {
-    color: #d4750a;
-}
-
 /* ===== Новеллы, не требующие схем ===== */
 .no-schema-list {
     display: flex;
@@ -392,17 +366,9 @@ html.light-theme body, html.light-theme body, body.light-theme .novel-card:hover
     margin-bottom: 4px;
 }
 
-html.light-theme body, html.light-theme body, body.light-theme .no-schema-body h3 {
-    color: #4a3728;
-}
-
 .no-schema-reason {
     color: #b8b8d0;
     font-size: 0.92em;
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .no-schema-reason {
-    color: #6d5c4a;
 }
 
 /* ===== В планах ===== */
@@ -473,102 +439,6 @@ footer a:hover {
     color: white;
 }
 
-html.light-theme body, html.light-theme body, body.light-theme .theme-toggle {
-    background: transparent;
-    border-color: rgba(139, 94, 60, 0.4);
-    color: #8b5e3c;
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .theme-toggle:hover {
-    border-color: rgba(139, 94, 60, 0.7);
-    color: #6d4c2e;
-}
-
-/* ===== Стили для светлой темы ===== */
-html.light-theme body, html.light-theme body, body.light-theme header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .tabs {
-    background: rgba(255, 255, 255, 0.98);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .tab {
-    color: #667085;
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .tab:hover {
-    color: #667eea;
-    background: rgba(102, 126, 234, 0.05);
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .tab.active {
-    color: #5b6ad0;
-    background: rgba(102, 126, 234, 0.1);
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .tab::before {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .tab.active::before {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .tab-content h2 {
-    color: #2c3e50;
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .about-content {
-    background: rgba(255, 252, 245, 0.98);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-    border-color: rgba(139, 94, 60, 0.2);
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .novel-card {
-    background: rgba(255, 252, 245, 0.98);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    border-color: rgba(139, 94, 60, 0.2);
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .novel-card:hover {
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .novel-card-title {
-    color: #4a3728;
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .novel-card:hover .novel-card-title {
-    color: #d4750a;
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .no-schema-row {
-    background: rgba(255, 252, 245, 0.98);
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
-    border-color: rgba(139, 94, 60, 0.2);
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .no-schema-row:hover {
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12);
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .no-schema-body h3 {
-    color: #4a3728;
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .plan-list {
-    background: rgba(255, 252, 245, 0.98);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-    border-color: rgba(139, 94, 60, 0.2);
-}
-
-html.light-theme body, html.light-theme body, body.light-theme footer {
-    background: linear-gradient(135deg, #8b5e3c 0%, #6d4c2e 100%);
-}
-
 /* ===== Кнопки "Назад" ===== */
 .back-link {
     background: rgba(255, 255, 255, 0.08);
@@ -607,21 +477,6 @@ html.light-theme body, html.light-theme body, body.light-theme footer {
     border-color: rgba(255, 255, 255, 0.25);
 }
 
-html.light-theme body, html.light-theme body, body.light-theme .back-link {
-    background: rgba(102, 126, 234, 0.08);
-    border-color: rgba(102, 126, 234, 0.2);
-    color: #5b6ad0;
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .back-link::before {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
-}
-
-html.light-theme body, html.light-theme body, body.light-theme .back-link:hover {
-    background: rgba(102, 126, 234, 0.15);
-    color: #4a5aa8;
-}
-
 /* ===== Адаптивность ===== */
 @media (max-width: 768px) {
     header {
@@ -638,6 +493,10 @@ html.light-theme body, html.light-theme body, body.light-theme .back-link:hover 
 
     .tabs .container {
         flex-wrap: wrap;
+    }
+
+    .tabs .lang-toggle {
+        margin-left: auto;
     }
 
     .tab {
@@ -670,4 +529,148 @@ html.light-theme body, html.light-theme body, body.light-theme .back-link:hover 
     .no-schema-poster {
         width: 74px;
     }
+}
+
+/* ===== Светлая тема: солнечная ===== */
+html.light-theme body {
+    background: linear-gradient(135deg, #fff9e6 0%, #ffeaa7 50%, #fdcb6e 100%);
+    color: #5d4e37;
+}
+
+html.light-theme body::before {
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(255, 214, 102, 0.35) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 80%, rgba(253, 203, 110, 0.28) 0%, transparent 55%);
+}
+
+html.light-theme header {
+    background: linear-gradient(135deg, #d4750a 0%, #b85e0a 100%);
+    box-shadow: 0 10px 40px rgba(184, 94, 10, 0.28);
+}
+
+html.light-theme .tabs {
+    background: rgba(255, 250, 240, 0.98);
+    box-shadow: 0 2px 20px rgba(139, 94, 60, 0.12);
+    border-bottom: 1px solid rgba(139, 94, 60, 0.2);
+}
+
+html.light-theme .tab {
+    color: #7a5a3a;
+}
+
+html.light-theme .tab:hover {
+    color: #b8650a;
+    background: rgba(212, 117, 10, 0.07);
+}
+
+html.light-theme .tab.active {
+    color: #8b3e0a;
+    background: rgba(212, 117, 10, 0.12);
+    border-bottom-color: #d4750a;
+}
+
+html.light-theme .tab::before {
+    background: linear-gradient(135deg, rgba(212, 117, 10, 0.14), rgba(184, 94, 10, 0.14));
+}
+
+html.light-theme .tab.active::before {
+    background: linear-gradient(135deg, rgba(212, 117, 10, 0.2), rgba(184, 94, 10, 0.2));
+}
+
+html.light-theme .tab-content h2 {
+    color: #4a3728;
+}
+
+html.light-theme .tab-note {
+    color: #6d5c4a;
+}
+
+html.light-theme .tab-note a {
+    color: #b8650a;
+}
+
+html.light-theme .about-content {
+    background: rgba(255, 252, 245, 0.98);
+    box-shadow: 0 10px 40px rgba(139, 94, 60, 0.1);
+    border-color: rgba(139, 94, 60, 0.2);
+}
+
+html.light-theme .about-content h3 {
+    color: #8b5e3c;
+}
+
+html.light-theme .about-content a {
+    color: #b8650a;
+}
+
+html.light-theme .novel-card {
+    background: rgba(255, 252, 245, 0.98);
+    box-shadow: 0 8px 30px rgba(139, 94, 60, 0.12);
+    border-color: rgba(139, 94, 60, 0.2);
+}
+
+html.light-theme .novel-card:hover {
+    box-shadow: 0 20px 50px rgba(139, 94, 60, 0.18);
+}
+
+html.light-theme .novel-card-title {
+    color: #4a3728;
+}
+
+html.light-theme .novel-card:hover .novel-card-title {
+    color: #b8650a;
+}
+
+html.light-theme .no-schema-row {
+    background: rgba(255, 252, 245, 0.98);
+    box-shadow: 0 6px 24px rgba(139, 94, 60, 0.1);
+    border-color: rgba(139, 94, 60, 0.2);
+}
+
+html.light-theme .no-schema-row:hover {
+    box-shadow: 0 10px 32px rgba(139, 94, 60, 0.16);
+}
+
+html.light-theme .no-schema-body h3 {
+    color: #4a3728;
+}
+
+html.light-theme .no-schema-reason {
+    color: #6d5c4a;
+}
+
+html.light-theme .plan-list {
+    background: rgba(255, 252, 245, 0.98);
+    box-shadow: 0 10px 40px rgba(139, 94, 60, 0.1);
+    border-color: rgba(139, 94, 60, 0.2);
+}
+
+html.light-theme .theme-toggle {
+    background: transparent;
+    border-color: rgba(139, 94, 60, 0.4);
+    color: #8b5e3c;
+}
+
+html.light-theme .theme-toggle:hover {
+    border-color: rgba(139, 94, 60, 0.7);
+    color: #6d4c2e;
+}
+
+html.light-theme .back-link {
+    background: transparent;
+    border-color: rgba(139, 94, 60, 0.35);
+    color: #8b5e3c;
+}
+
+html.light-theme .back-link::before {
+    background: linear-gradient(135deg, rgba(212, 117, 10, 0.15), rgba(184, 94, 10, 0.15));
+}
+
+html.light-theme .back-link:hover {
+    background: rgba(212, 117, 10, 0.1);
+    color: #6d4c2e;
+}
+
+html.light-theme footer {
+    background: linear-gradient(135deg, #8b5e3c 0%, #6d4c2e 100%);
 }
