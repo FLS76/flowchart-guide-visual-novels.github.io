@@ -192,6 +192,12 @@
         btn.textContent = lang === 'en' ? 'RU' : 'EN';
         btn.title = lang === 'en' ? 'Switch to Russian' : 'Переключить на английский';
         btn.setAttribute('aria-label', btn.title);
+        
+        // Также переводим title у кнопки темы
+        var themeBtn = document.getElementById('themeToggle');
+        if (themeBtn) {
+            themeBtn.title = lang === 'en' ? 'Toggle theme' : 'Сменить тему';
+        }
     }
 
     function applyLanguage(lang) {
@@ -227,6 +233,7 @@
 
     function init() {
         createButton();
+        // Сначала применяем язык, затем тему (чтобы тема не перезаписала перевод кнопки)
         applyLanguage(readLang());
     }
 

@@ -17,6 +17,7 @@
         if (!button) return;
         button.textContent = theme === 'light' ? '☀️' : '🌙';
         button.setAttribute('aria-pressed', theme === 'light' ? 'true' : 'false');
+        // Не перезаписываем title — его устанавливает i18n.js в зависимости от языка
     }
 
     function setTheme(theme, persist) {
