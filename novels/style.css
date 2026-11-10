@@ -34,8 +34,8 @@ body::before {
 
 html.light-theme body,
 body.light-theme {
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-    color: #2c3e50;
+    background: linear-gradient(135deg, #fff9e6 0%, #ffeaa7 50%, #fdcb6e 100%);
+    color: #5d4e37;
 }
 
 html.light-theme body::before,
