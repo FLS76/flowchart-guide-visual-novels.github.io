@@ -15,12 +15,14 @@ body {
     flex-direction: column;
 }
 
-body.light-theme {
+html.light-theme body,
+html.light-theme body, html.light-theme body, body.light-theme {
     background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 50%, #ffe082 100%);
     color: #4a3728;
 }
 
-body.light-theme::before {
+html.light-theme body::before,
+html.light-theme body, html.light-theme body, body.light-theme::before {
     background: 
         radial-gradient(ellipse at 20% 20%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
         radial-gradient(ellipse at 80% 80%, rgba(240, 147, 251, 0.08) 0%, transparent 50%);
@@ -184,7 +186,7 @@ header .subtitle {
     font-size: 1.7em;
 }
 
-body.light-theme .tab-content h2 {
+html.light-theme body, html.light-theme body, body.light-theme .tab-content h2 {
     color: #4a3728;
 }
 
@@ -193,7 +195,7 @@ body.light-theme .tab-content h2 {
     margin-bottom: 14px;
 }
 
-body.light-theme .tab-note {
+html.light-theme body, html.light-theme body, body.light-theme .tab-note {
     color: #6d5c4a;
 }
 
@@ -201,7 +203,7 @@ body.light-theme .tab-note {
     color: #a8b8ff;
 }
 
-body.light-theme .tab-note a {
+html.light-theme body, html.light-theme body, body.light-theme .tab-note a {
     color: #d4750a;
 }
 
@@ -224,7 +226,7 @@ body.light-theme .tab-note a {
     font-size: 1.18em;
 }
 
-body.light-theme .about-content h3 {
+html.light-theme body, html.light-theme body, body.light-theme .about-content h3 {
     color: #8b5e3c;
 }
 
@@ -250,7 +252,7 @@ body.light-theme .about-content h3 {
     color: #a8b8ff;
 }
 
-body.light-theme .about-content a {
+html.light-theme body, html.light-theme body, body.light-theme .about-content a {
     color: #d4750a;
 }
 
@@ -333,11 +335,11 @@ body.light-theme .about-content a {
     transform: scale(1.02);
 }
 
-body.light-theme .novel-card-title {
+html.light-theme body, html.light-theme body, body.light-theme .novel-card-title {
     color: #4a3728;
 }
 
-body.light-theme .novel-card:hover .novel-card-title {
+html.light-theme body, html.light-theme body, body.light-theme .novel-card:hover .novel-card-title {
     color: #d4750a;
 }
 
@@ -390,7 +392,7 @@ body.light-theme .novel-card:hover .novel-card-title {
     margin-bottom: 4px;
 }
 
-body.light-theme .no-schema-body h3 {
+html.light-theme body, html.light-theme body, body.light-theme .no-schema-body h3 {
     color: #4a3728;
 }
 
@@ -399,7 +401,7 @@ body.light-theme .no-schema-body h3 {
     font-size: 0.92em;
 }
 
-body.light-theme .no-schema-reason {
+html.light-theme body, html.light-theme body, body.light-theme .no-schema-reason {
     color: #6d5c4a;
 }
 
@@ -471,99 +473,99 @@ footer a:hover {
     color: white;
 }
 
-body.light-theme .theme-toggle {
+html.light-theme body, html.light-theme body, body.light-theme .theme-toggle {
     background: transparent;
     border-color: rgba(139, 94, 60, 0.4);
     color: #8b5e3c;
 }
 
-body.light-theme .theme-toggle:hover {
+html.light-theme body, html.light-theme body, body.light-theme .theme-toggle:hover {
     border-color: rgba(139, 94, 60, 0.7);
     color: #6d4c2e;
 }
 
 /* ===== Стили для светлой темы ===== */
-body.light-theme header {
+html.light-theme body, html.light-theme body, body.light-theme header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
-body.light-theme .tabs {
+html.light-theme body, html.light-theme body, body.light-theme .tabs {
     background: rgba(255, 255, 255, 0.98);
     box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-body.light-theme .tab {
+html.light-theme body, html.light-theme body, body.light-theme .tab {
     color: #667085;
 }
 
-body.light-theme .tab:hover {
+html.light-theme body, html.light-theme body, body.light-theme .tab:hover {
     color: #667eea;
     background: rgba(102, 126, 234, 0.05);
 }
 
-body.light-theme .tab.active {
+html.light-theme body, html.light-theme body, body.light-theme .tab.active {
     color: #5b6ad0;
     background: rgba(102, 126, 234, 0.1);
 }
 
-body.light-theme .tab::before {
+html.light-theme body, html.light-theme body, body.light-theme .tab::before {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
 }
 
-body.light-theme .tab.active::before {
+html.light-theme body, html.light-theme body, body.light-theme .tab.active::before {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
 }
 
-body.light-theme .tab-content h2 {
+html.light-theme body, html.light-theme body, body.light-theme .tab-content h2 {
     color: #2c3e50;
 }
 
-body.light-theme .about-content {
+html.light-theme body, html.light-theme body, body.light-theme .about-content {
     background: rgba(255, 252, 245, 0.98);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
     border-color: rgba(139, 94, 60, 0.2);
 }
 
-body.light-theme .novel-card {
+html.light-theme body, html.light-theme body, body.light-theme .novel-card {
     background: rgba(255, 252, 245, 0.98);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
     border-color: rgba(139, 94, 60, 0.2);
 }
 
-body.light-theme .novel-card:hover {
+html.light-theme body, html.light-theme body, body.light-theme .novel-card:hover {
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
 }
 
-body.light-theme .novel-card-title {
+html.light-theme body, html.light-theme body, body.light-theme .novel-card-title {
     color: #4a3728;
 }
 
-body.light-theme .novel-card:hover .novel-card-title {
+html.light-theme body, html.light-theme body, body.light-theme .novel-card:hover .novel-card-title {
     color: #d4750a;
 }
 
-body.light-theme .no-schema-row {
+html.light-theme body, html.light-theme body, body.light-theme .no-schema-row {
     background: rgba(255, 252, 245, 0.98);
     box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
     border-color: rgba(139, 94, 60, 0.2);
 }
 
-body.light-theme .no-schema-row:hover {
+html.light-theme body, html.light-theme body, body.light-theme .no-schema-row:hover {
     box-shadow: 0 10px 32px rgba(0, 0, 0, 0.12);
 }
 
-body.light-theme .no-schema-body h3 {
+html.light-theme body, html.light-theme body, body.light-theme .no-schema-body h3 {
     color: #4a3728;
 }
 
-body.light-theme .plan-list {
+html.light-theme body, html.light-theme body, body.light-theme .plan-list {
     background: rgba(255, 252, 245, 0.98);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
     border-color: rgba(139, 94, 60, 0.2);
 }
 
-body.light-theme footer {
+html.light-theme body, html.light-theme body, body.light-theme footer {
     background: linear-gradient(135deg, #8b5e3c 0%, #6d4c2e 100%);
 }
 
@@ -605,17 +607,17 @@ body.light-theme footer {
     border-color: rgba(255, 255, 255, 0.25);
 }
 
-body.light-theme .back-link {
+html.light-theme body, html.light-theme body, body.light-theme .back-link {
     background: rgba(102, 126, 234, 0.08);
     border-color: rgba(102, 126, 234, 0.2);
     color: #5b6ad0;
 }
 
-body.light-theme .back-link::before {
+html.light-theme body, html.light-theme body, body.light-theme .back-link::before {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
 }
 
-body.light-theme .back-link:hover {
+html.light-theme body, html.light-theme body, body.light-theme .back-link:hover {
     background: rgba(102, 126, 234, 0.15);
     color: #4a5aa8;
 }
