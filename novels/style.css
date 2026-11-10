@@ -276,20 +276,20 @@ main.container {
 }
 
 main.container {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(30, 28, 60, 0.95);
     backdrop-filter: blur(20px);
     border-radius: 28px;
     box-shadow: 
         0 30px 80px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     max-width: 1120px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 body.light-theme main.container {
-    background: white;
+    background: rgba(255, 252, 245, 0.98);
     box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
-    border-color: rgba(0, 0, 0, 0.05);
+    border-color: rgba(139, 94, 60, 0.2);
 }
 
 /* ===== Двухколоночный макет страницы новеллы ===== */
@@ -338,21 +338,29 @@ body.light-theme main.container {
 .novel-content h1 {
     font-size: 2.6em;
     line-height: 1.12;
-    color: #1a1a2e;
+    color: #e8e8f0;
     margin-bottom: 10px;
     font-weight: 800;
     letter-spacing: -0.02em;
 }
 
+body.light-theme .novel-content h1 {
+    color: #4a3728;
+}
+
 .novel-subtitle {
-    color: #7b849c;
+    color: #b8b8d0;
     font-size: 1.02em;
     margin-bottom: 30px;
 }
 
+body.light-theme .novel-subtitle {
+    color: #6d5c4a;
+}
+
 /* ===== Заголовки разделов ===== */
 h2 {
-    color: #1a1a2e;
+    color: #e8e8f0;
     font-size: 1.4em;
     line-height: 1.25;
     margin-bottom: 22px;
@@ -362,10 +370,18 @@ h2 {
     font-weight: 700;
 }
 
+body.light-theme h2 {
+    color: #4a3728;
+}
+
 h3 {
-    color: #2c3e50;
+    color: #b8c8ff;
     font-size: 1.12em;
     margin-bottom: 10px;
+}
+
+body.light-theme h3 {
+    color: #8b5e3c;
 }
 
 section {
@@ -378,14 +394,19 @@ section:last-child {
 
 /* ===== Общая информация ===== */
 .novel-info {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(40, 38, 70, 0.95);
     backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 20px;
     padding: 30px 32px;
     box-shadow: 
-        0 10px 40px rgba(0, 0, 0, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        0 10px 40px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+body.light-theme .novel-info {
+    background: rgba(255, 252, 245, 0.98);
+    border-color: rgba(139, 94, 60, 0.2);
 }
 
 .novel-info p {
@@ -399,7 +420,11 @@ section:last-child {
 }
 
 .novel-info strong {
-    color: #4a5aa8;
+    color: #a8b8ff;
+}
+
+body.light-theme .novel-info strong {
+    color: #8b5e3c;
 }
 
 .novel-info ul {
@@ -415,16 +440,27 @@ section:last-child {
 }
 
 .novel-meta-item {
-    background: white;
+    background: rgba(50, 48, 80, 0.95);
     padding: 7px 15px;
     border-radius: 20px;
     font-size: 0.86em;
-    border: 1px solid #e6e9f5;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #b8b8d0;
+}
+
+body.light-theme .novel-meta-item {
+    background: rgba(255, 252, 245, 0.98);
+    border-color: rgba(139, 94, 60, 0.2);
+    color: #6d5c4a;
 }
 
 .novel-meta-item strong {
-    color: #4a5aa8;
+    color: #a8b8ff;
     margin-right: 5px;
+}
+
+body.light-theme .novel-meta-item strong {
+    color: #8b5e3c;
 }
 
 /* ===== Список схем ===== */
@@ -436,20 +472,25 @@ section:last-child {
 }
 
 .schema-block {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(40, 38, 70, 0.95);
     backdrop-filter: blur(10px);
     padding: 26px 28px;
     border-radius: 18px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     text-decoration: none;
     color: inherit;
     display: block;
     box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
+}
+
+body.light-theme .schema-block {
+    background: rgba(255, 252, 245, 0.98);
+    border-color: rgba(139, 94, 60, 0.2);
 }
 
 .schema-block::before {
@@ -478,15 +519,23 @@ section:last-child {
 }
 
 .schema-block h3 {
-    color: #3f4f8a;
+    color: #b8c8ff;
     margin-bottom: 10px;
     font-size: 1.12em;
 }
 
+body.light-theme .schema-block h3 {
+    color: #8b5e3c;
+}
+
 .schema-info {
     font-size: 0.9em;
-    color: #667085;
+    color: #b8b8d0;
     line-height: 1.6;
+}
+
+body.light-theme .schema-info {
+    color: #6d5c4a;
 }
 
 .schema-info p {
@@ -494,7 +543,11 @@ section:last-child {
 }
 
 .schema-info strong {
-    color: #3a4358;
+    color: #a8b8ff;
+}
+
+body.light-theme .schema-info strong {
+    color: #8b5e3c;
 }
 
 /* ===== Страница схемы ===== */
@@ -524,9 +577,16 @@ section:last-child {
     line-height: 1.55;
     font-size: 1.04em;
     padding: 10px 14px;
-    background: rgba(102, 126, 234, 0.04);
+    background: rgba(50, 48, 80, 0.95);
     border-radius: 10px;
-    border: 1px solid rgba(102, 126, 234, 0.10);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #b8b8d0;
+}
+
+body.light-theme .schema-page .novel-info p {
+    background: rgba(255, 252, 245, 0.98);
+    border-color: rgba(139, 94, 60, 0.2);
+    color: #6d5c4a;
 }
 
 .schema-page .novel-info p:last-child {
@@ -536,7 +596,7 @@ section:last-child {
 .schema-page .novel-info strong {
     display: inline-block;
     min-width: 86px;
-    color: #4a5aa8;
+    color: #a8b8ff;
     font-weight: 600;
     letter-spacing: 0.01em;
     font-size: 0.94em;
@@ -544,10 +604,19 @@ section:last-child {
     opacity: 0.82;
 }
 
+body.light-theme .schema-page .novel-info strong {
+    color: #8b5e3c;
+}
+
 .schema-page .novel-info p.author-line {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.10), rgba(118, 75, 162, 0.08));
-    border-color: rgba(102, 126, 234, 0.24);
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.12));
+    border-color: rgba(102, 126, 234, 0.3);
     padding: 14px 18px;
+}
+
+body.light-theme .schema-page .novel-info p.author-line {
+    background: linear-gradient(135deg, rgba(139, 94, 60, 0.1), rgba(109, 76, 46, 0.08));
+    border-color: rgba(139, 94, 60, 0.25);
 }
 
 .schema-page .novel-info p.author-line strong {
@@ -621,22 +690,31 @@ section:last-child {
 
 .schema-note {
     margin-top: 16px;
-    color: #7b849c;
+    color: #b8b8d0;
     font-size: 0.92em;
     font-style: italic;
 }
 
+body.light-theme .schema-note {
+    color: #6d5c4a;
+}
+
 /* ===== Комментарий автора ===== */
 .author-comment {
-    background: rgba(255, 250, 240, 0.95);
+    background: rgba(60, 55, 40, 0.95);
     backdrop-filter: blur(10px);
     padding: 30px 32px;
     border-radius: 20px;
     border-left: 5px solid;
     border-image: linear-gradient(180deg, #f0a92e, #ff6b6b) 1;
     box-shadow: 
-        0 10px 40px rgba(0, 0, 0, 0.08),
-        inset 0 1px 0 rgba(255, 255, 255, 0.5);
+        0 10px 40px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+body.light-theme .author-comment {
+    background: rgba(255, 250, 240, 0.98);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
 }
 
 .author-comment h2 {
@@ -653,10 +731,15 @@ section:last-child {
 
 /* ===== Примечания ===== */
 .notes {
-    background: #f8f9fd;
+    background: rgba(40, 38, 70, 0.95);
     padding: 26px 28px;
     border-radius: 14px;
-    border: 1px solid #e6e9f5;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+body.light-theme .notes {
+    background: rgba(255, 252, 245, 0.98);
+    border-color: rgba(139, 94, 60, 0.2);
 }
 
 .notes ul {
@@ -666,9 +749,15 @@ section:last-child {
 
 .notes li {
     padding: 10px 0 10px 26px;
-    border-bottom: 1px solid #e9ecf6;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 0.97em;
     position: relative;
+    color: #b8b8d0;
+}
+
+body.light-theme .notes li {
+    border-bottom-color: rgba(139, 94, 60, 0.2);
+    color: #6d5c4a;
 }
 
 .notes li::before {
@@ -690,29 +779,46 @@ blockquote {
     display: inline;
     margin: 0;
     padding: 0 8px;
-    border-left: 2px solid #d0d7e8;
-    color: #5a6478;
+    border-left: 2px solid #667eea;
+    color: #b8b8d0;
     font-style: italic;
+}
+
+body.light-theme blockquote {
+    border-left-color: #8b5e3c;
+    color: #6d5c4a;
 }
 
 /* ===== Спойлер (inline) ===== */
 .spoiler-toggle {
     display: inline;
     cursor: pointer;
-    color: #667eea;
+    color: #a8b8ff;
     text-decoration: underline;
     text-decoration-style: dotted;
     text-underline-offset: 3px;
     font-weight: 500;
 }
 
+body.light-theme .spoiler-toggle {
+    color: #d4750a;
+}
+
 .spoiler-toggle:hover {
-    color: #4a5aa8;
+    color: #c8d8ff;
+}
+
+body.light-theme .spoiler-toggle:hover {
+    color: #b8650a;
 }
 
 .spoiler-content {
     display: none;
-    color: #2c3e50;
+    color: #e8e8f0;
+}
+
+body.light-theme .spoiler-content {
+    color: #4a3728;
 }
 
 .spoiler-content.visible {
@@ -735,6 +841,10 @@ footer {
     box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
 }
 
+body.light-theme footer {
+    background: linear-gradient(135deg, #8b5e3c 0%, #6d4c2e 100%);
+}
+
 footer p {
     margin-bottom: 6px;
 }
@@ -745,9 +855,17 @@ footer a {
     transition: color 0.25s;
 }
 
+body.light-theme footer a {
+    color: #d4750a;
+}
+
 footer a:hover {
     color: white;
     text-decoration: underline;
+}
+
+body.light-theme footer a:hover {
+    color: #b8650a;
 }
 
 footer .back-link {
@@ -756,35 +874,14 @@ footer .back-link {
 
 /* ===== Светлая тема для страниц новелл ===== */
 body.light-theme .topbar .back-link {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    background: rgba(139, 94, 60, 0.08);
+    border-color: rgba(139, 94, 60, 0.2);
+    color: #8b5e3c;
 }
 
 body.light-theme .topbar .back-link:hover {
-    background: rgba(255, 255, 255, 0.3);
-}
-
-body.light-theme .novel-content h1 {
-    color: #1a1a2e;
-}
-
-body.light-theme h2 {
-    color: #2c3e50;
-}
-
-body.light-theme .novel-info {
-    background: #f8f9fd;
-    border-color: #e6e9f5;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
-}
-
-body.light-theme .novel-info p strong {
-    color: #3f4f8a;
-}
-
-body.light-theme .novel-info p a {
-    color: #667eea;
+    background: rgba(139, 94, 60, 0.15);
+    color: #6d4c2e;
 }
 
 body.light-theme .schema-block {
