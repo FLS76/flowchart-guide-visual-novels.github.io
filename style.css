@@ -8,7 +8,7 @@
 body {
     font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, sans-serif;
     line-height: 1.6;
-    color: #1a1a2e;
+    color: #e8e8f0;
     background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
     min-height: 100vh;
     display: flex;
@@ -16,8 +16,8 @@ body {
 }
 
 body.light-theme {
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
-    color: #2c3e50;
+    background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 50%, #ffe082 100%);
+    color: #4a3728;
 }
 
 body.light-theme::before {
@@ -179,18 +179,30 @@ header .subtitle {
 }
 
 .tab-content h2 {
-    color: #2c3e50;
+    color: #e8e8f0;
     margin-bottom: 16px;
     font-size: 1.7em;
 }
 
+body.light-theme .tab-content h2 {
+    color: #4a3728;
+}
+
 .tab-note {
-    color: #667085;
+    color: #b8b8d0;
     margin-bottom: 14px;
 }
 
+body.light-theme .tab-note {
+    color: #6d5c4a;
+}
+
 .tab-note a {
-    color: #5b6ad0;
+    color: #a8b8ff;
+}
+
+body.light-theme .tab-note a {
+    color: #d4750a;
 }
 
 /* ===== О проекте ===== */
@@ -207,9 +219,13 @@ header .subtitle {
 }
 
 .about-content h3 {
-    color: #3f4f8a;
+    color: #b8c8ff;
     margin: 26px 0 10px;
     font-size: 1.18em;
+}
+
+body.light-theme .about-content h3 {
+    color: #8b5e3c;
 }
 
 .about-content h3:first-child {
@@ -231,7 +247,11 @@ header .subtitle {
 }
 
 .about-content a {
-    color: #5b6ad0;
+    color: #a8b8ff;
+}
+
+body.light-theme .about-content a {
+    color: #d4750a;
 }
 
 /* ===== Сделанные схемы: постер + название ===== */
@@ -303,14 +323,22 @@ header .subtitle {
     font-size: 0.96em;
     font-weight: 700;
     line-height: 1.4;
-    color: #1a1a2e;
+    color: #e8e8f0;
     transition: all 0.3s ease;
     text-align: center;
 }
 
 .novel-card:hover .novel-card-title {
-    color: #667eea;
+    color: #a8b8ff;
     transform: scale(1.02);
+}
+
+body.light-theme .novel-card-title {
+    color: #4a3728;
+}
+
+body.light-theme .novel-card:hover .novel-card-title {
+    color: #d4750a;
 }
 
 /* ===== Новеллы, не требующие схем ===== */
@@ -356,15 +384,23 @@ header .subtitle {
 }
 
 .no-schema-body h3 {
-    color: #2c3e50;
+    color: #e8e8f0;
     font-size: 1.08em;
     line-height: 1.35;
     margin-bottom: 4px;
 }
 
+body.light-theme .no-schema-body h3 {
+    color: #4a3728;
+}
+
 .no-schema-reason {
-    color: #667085;
+    color: #b8b8d0;
     font-size: 0.92em;
+}
+
+body.light-theme .no-schema-reason {
+    color: #6d5c4a;
 }
 
 /* ===== В планах ===== */
@@ -417,28 +453,56 @@ footer a:hover {
 
 /* ===== Кнопка смены темы ===== */
 .theme-toggle {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    width: 44px;
-    height: 44px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 10px 16px;
     cursor: pointer;
-    font-size: 1.2em;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-family: inherit;
+    font-size: 0.95em;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.85);
     transition: all 0.3s ease;
-    margin-left: 20px;
+    margin-left: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.theme-toggle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+    transition: width 0.3s ease, left 0.3s ease;
+    z-index: -1;
+}
+
+.theme-toggle:hover::before {
+    width: 100%;
+    left: 0;
 }
 
 .theme-toggle:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: rotate(180deg);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.25);
 }
 
 body.light-theme .theme-toggle {
-    background: rgba(0, 0, 0, 0.05);
-    border-color: rgba(0, 0, 0, 0.1);
+    background: rgba(102, 126, 234, 0.08);
+    border-color: rgba(102, 126, 234, 0.2);
+    color: #5b6ad0;
+}
+
+body.light-theme .theme-toggle::before {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+}
+
+body.light-theme .theme-toggle:hover {
+    background: rgba(102, 126, 234, 0.15);
+    color: #4a5aa8;
 }
 
 /* ===== Стили для светлой темы ===== */
@@ -493,11 +557,11 @@ body.light-theme .novel-card:hover {
 }
 
 body.light-theme .novel-card-title {
-    color: #2c3e50;
+    color: #4a3728;
 }
 
 body.light-theme .novel-card:hover .novel-card-title {
-    color: #667eea;
+    color: #d4750a;
 }
 
 body.light-theme .no-schema-row {
@@ -510,7 +574,7 @@ body.light-theme .no-schema-row:hover {
 }
 
 body.light-theme .no-schema-body h3 {
-    color: #2c3e50;
+    color: #4a3728;
 }
 
 body.light-theme .plan-list {
@@ -519,7 +583,60 @@ body.light-theme .plan-list {
 }
 
 body.light-theme footer {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    background: linear-gradient(135deg, #8b5e3c 0%, #6d4c2e 100%);
+}
+
+/* ===== Кнопки "Назад" ===== */
+.back-link {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    padding: 10px 18px;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 0.95em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.back-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 0;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.3), rgba(118, 75, 162, 0.3));
+    transition: width 0.3s ease, left 0.3s ease;
+    z-index: -1;
+}
+
+.back-link:hover::before {
+    width: 100%;
+    left: 0;
+}
+
+.back-link:hover {
+    color: white;
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+body.light-theme .back-link {
+    background: rgba(102, 126, 234, 0.08);
+    border-color: rgba(102, 126, 234, 0.2);
+    color: #5b6ad0;
+}
+
+body.light-theme .back-link::before {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+}
+
+body.light-theme .back-link:hover {
+    background: rgba(102, 126, 234, 0.15);
+    color: #4a5aa8;
 }
 
 /* ===== Адаптивность ===== */
