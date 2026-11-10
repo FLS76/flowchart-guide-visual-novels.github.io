@@ -2,21 +2,6 @@
 (function() {
     'use strict';
     
-    // Применяем сохранённую тему сразу при загрузке (до рендеринга)
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-        document.documentElement.classList.add('light-theme');
-    }
-    
-    // Ждём загрузки DOM
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-            applyTheme();
-        });
-    } else {
-        applyTheme();
-    }
-    
     function applyTheme() {
         const themeToggle = document.getElementById('themeToggle');
         if (!themeToggle) return;
@@ -36,5 +21,12 @@
             themeToggle.textContent = nowLight ? '☀️' : '🌙';
             localStorage.setItem('theme', nowLight ? 'light' : 'dark');
         });
+    }
+    
+    // Запускаем после загрузки DOM
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', applyTheme);
+    } else {
+        applyTheme();
     }
 })();
