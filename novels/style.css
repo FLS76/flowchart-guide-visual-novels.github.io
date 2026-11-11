@@ -562,6 +562,28 @@ section:last-child {
     transform: scale(1.012);
 }
 
+/* Заглушка на месте изображения схемы, если файл ещё не загружен */
+.schema-image-missing {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    padding: 36px 24px;
+    border: 2px dashed rgba(139, 94, 60, 0.35);
+    border-radius: 14px;
+    background: rgba(139, 94, 60, 0.07);
+    color: #a08a6a;
+    font-size: 0.95em;
+    line-height: 1.7;
+    text-align: center;
+}
+
+html.light-theme .schema-image-missing {
+    border-color: rgba(212, 117, 10, 0.45);
+    background: rgba(212, 117, 10, 0.08);
+    color: #8b5e3c;
+}
+
 .schema-note {
     margin-top: 16px;
     color: #b8b8d0;
