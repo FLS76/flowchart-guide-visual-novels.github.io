@@ -314,7 +314,7 @@
         });
     }
 
-    window.SchemaViewer = { open: openViewer, close: closeViewer, __zoomAt: zoomAt, __fitImage: fitImage, __sv_state: function() { return state; } };
+    window.SchemaViewer = { open: openViewer, close: closeViewer };
 
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
