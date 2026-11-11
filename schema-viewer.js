@@ -88,19 +88,20 @@
         var scaledW = iw * state.scale;
         var scaledH = ih * state.scale;
 
-        // Если картинка меньше viewport — центрируем
-        if (scaledW <= vw) state.x = (vw - scaledW) / 2;
+        // Картинка меньше viewport — центрируем
+        if (scaledW < vw) state.x = (vw - scaledW) / 2;
+        // Картинка больше viewport — не даём уйти слишком далеко
         else {
-            // Не даём уйти левому краю правее центра viewport
-            if (state.x > vw - scaledW) state.x = vw - scaledW;
-            // Не даём уйти правому краю левее нуля
-            if (state.x < 0) state.x = 0;
+            var maxX = vw - scaledW; // минимальный x (картинка ушла вправо до края)
+            if (state.x > 0) state.x = 0;           // не даём сдвинуть вправо за край
+            if (state.x < maxX) state.x = maxX;     // не даём сдвинуть влево за край
         }
 
-        if (scaledH <= vh) state.y = (vh - scaledH) / 2;
+        if (scaledH < vh) state.y = (vh - scaledH) / 2;
         else {
-            if (state.y > vh - scaledH) state.y = vh - scaledH;
-            if (state.y < 0) state.y = 0;
+            var maxY = vh - scaledH;
+            if (state.y > 0) state.y = 0;
+            if (state.y < maxY) state.y = maxY;
         }
     }
 
