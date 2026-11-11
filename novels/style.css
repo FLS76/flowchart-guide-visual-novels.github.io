@@ -498,7 +498,7 @@ section:last-child {
 }
 
 .schema-page .novel-info p.author-line strong {
-    color: #ffd28a;
+    color: #b8c8ff;
     font-size: 1.10em;
     font-weight: 700;
     letter-spacing: 0.02em;
@@ -600,14 +600,13 @@ html.light-theme .schema-image-missing {
 /* ===== Комментарий автора ===== */
 .author-comment {
     position: relative;
-    background: linear-gradient(160deg, #fffaf0 0%, #f9ead0 100%);
+    background: rgba(60, 55, 40, 0.95);
     backdrop-filter: blur(10px);
     padding: 30px 32px;
     border-radius: 20px;
-    border: 1px solid rgba(212, 117, 10, 0.28);
     box-shadow:
-        0 14px 40px rgba(0, 0, 0, 0.28),
-        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        0 10px 40px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
     overflow: hidden;
 }
 
@@ -626,12 +625,12 @@ html.light-theme .schema-image-missing {
 .author-comment h2 {
     border-left: none;
     padding-left: 0;
-    color: #9a6a12;
+    color: #f0c060;
 }
 
 .author-comment p {
     font-style: italic;
-    color: #6b5b3e;
+    color: #ded0ae;
     line-height: 1.8;
 }
 
@@ -1054,7 +1053,7 @@ html.light-theme .schema-note {
 
 html.light-theme .author-comment {
     background: linear-gradient(160deg, #fff7de 0%, #fce9ba 100%);
-    border-color: rgba(212, 117, 10, 0.35);
+    border: 1px solid rgba(212, 117, 10, 0.35);
     box-shadow:
         0 14px 40px rgba(139, 94, 60, 0.2),
         inset 0 1px 0 rgba(255, 255, 255, 0.7);
