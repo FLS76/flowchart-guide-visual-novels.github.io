@@ -80,7 +80,32 @@
         }
     }
 
+    function clampPosition() {
+        var vw = viewport.clientWidth;
+        var vh = viewport.clientHeight;
+        var iw = imgEl.naturalWidth  || 800;
+        var ih = imgEl.naturalHeight || 600;
+        var scaledW = iw * state.scale;
+        var scaledH = ih * state.scale;
+
+        // Если картинка меньше viewport — центрируем
+        if (scaledW <= vw) state.x = (vw - scaledW) / 2;
+        else {
+            // Не даём уйти левому краю правее центра viewport
+            if (state.x > vw - scaledW) state.x = vw - scaledW;
+            // Не даём уйти правому краю левее нуля
+            if (state.x < 0) state.x = 0;
+        }
+
+        if (scaledH <= vh) state.y = (vh - scaledH) / 2;
+        else {
+            if (state.y > vh - scaledH) state.y = vh - scaledH;
+            if (state.y < 0) state.y = 0;
+        }
+    }
+
     function applyTransform() {
+        clampPosition();
         canvas.style.transform = 'translate(' + state.x + 'px,' + state.y + 'px) scale(' + state.scale + ')';
         scaleLabel.textContent = Math.round(state.scale * 100) + '%';
     }
@@ -106,12 +131,15 @@
         var ih = imgEl.naturalHeight || 600;
         var s = Math.min(vw / iw, vh / ih) * 0.9;
         state.scale = s;
+        // Центрируем
         state.x = (vw - iw * s) / 2;
         state.y = (vh - ih * s) / 2;
         applyTransform();
     }
 
     function zoomAt(cx, cy, factor) {
+        var vw = viewport.clientWidth;
+        var vh = viewport.clientHeight;
         var ns = Math.min(SCALE_MAX, Math.max(SCALE_MIN, state.scale * factor));
         var r = ns / state.scale;
         state.x = cx - r * (cx - state.x);
@@ -285,7 +313,7 @@
         });
     }
 
-    window.SchemaViewer = { open: openViewer, close: closeViewer };
+    window.SchemaViewer = { open: openViewer, close: closeViewer, __zoomAt: zoomAt, __fitImage: fitImage, __sv_state: function() { return state; } };
 
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
