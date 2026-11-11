@@ -533,24 +533,31 @@ footer a:hover {
 
 /* ===== Светлая тема: солнечная ===== */
 html.light-theme body {
-    background: linear-gradient(135deg, #fff9e6 0%, #ffeaa7 50%, #fdcb6e 100%);
+    background:
+        radial-gradient(ellipse at 12% 8%, rgba(255, 236, 150, 0.85) 0%, transparent 45%),
+        radial-gradient(ellipse at 88% 92%, rgba(249, 175, 60, 0.45) 0%, transparent 50%),
+        linear-gradient(135deg, #fffaec 0%, #fff1c4 38%, #ffe0a0 72%, #fdcb6e 100%);
     color: #5d4e37;
 }
 
 html.light-theme body::before {
     background:
-        radial-gradient(ellipse at 20% 20%, rgba(255, 214, 102, 0.35) 0%, transparent 55%),
-        radial-gradient(ellipse at 80% 80%, rgba(253, 203, 110, 0.28) 0%, transparent 55%);
+        radial-gradient(circle at 18% 14%, rgba(255, 247, 200, 0.95) 0%, transparent 38%),
+        radial-gradient(circle at 78% 26%, rgba(255, 226, 140, 0.55) 0%, transparent 42%),
+        radial-gradient(ellipse at 85% 88%, rgba(240, 160, 50, 0.35) 0%, transparent 50%),
+        radial-gradient(ellipse at 35% 95%, rgba(255, 214, 102, 0.45) 0%, transparent 48%);
 }
 
 html.light-theme header {
-    background: linear-gradient(135deg, #d4750a 0%, #b85e0a 100%);
-    box-shadow: 0 10px 40px rgba(184, 94, 10, 0.28);
+    background:
+        radial-gradient(ellipse at 15% 0%, rgba(255, 226, 150, 0.55) 0%, transparent 55%),
+        linear-gradient(135deg, #f79c1e 0%, #e07d09 42%, #c26a08 78%, #a85a09 100%);
+    box-shadow: 0 10px 40px rgba(184, 94, 10, 0.3);
 }
 
 html.light-theme .tabs {
-    background: rgba(255, 250, 240, 0.98);
-    box-shadow: 0 2px 20px rgba(139, 94, 60, 0.12);
+    background: linear-gradient(180deg, rgba(255, 253, 247, 0.99) 0%, rgba(255, 243, 216, 0.99) 100%);
+    box-shadow: 0 2px 20px rgba(139, 94, 60, 0.14);
     border-bottom: 1px solid rgba(139, 94, 60, 0.2);
 }
 
@@ -560,12 +567,12 @@ html.light-theme .tab {
 
 html.light-theme .tab:hover {
     color: #b8650a;
-    background: rgba(212, 117, 10, 0.07);
+    background: linear-gradient(180deg, rgba(240, 146, 42, 0.16) 0%, rgba(212, 117, 10, 0.04) 100%);
 }
 
 html.light-theme .tab.active {
     color: #8b3e0a;
-    background: rgba(212, 117, 10, 0.12);
+    background: linear-gradient(180deg, rgba(247, 156, 30, 0.28) 0%, rgba(212, 117, 10, 0.10) 100%);
     border-bottom-color: #d4750a;
 }
 
@@ -590,9 +597,9 @@ html.light-theme .tab-note a {
 }
 
 html.light-theme .about-content {
-    background: rgba(255, 252, 245, 0.98);
-    box-shadow: 0 10px 40px rgba(139, 94, 60, 0.1);
-    border-color: rgba(139, 94, 60, 0.2);
+    background: linear-gradient(160deg, #fffdf7 0%, #fff4dc 100%);
+    box-shadow: 0 10px 40px rgba(139, 94, 60, 0.12);
+    border-color: rgba(139, 94, 60, 0.22);
 }
 
 html.light-theme .about-content h3 {
@@ -604,13 +611,14 @@ html.light-theme .about-content a {
 }
 
 html.light-theme .novel-card {
-    background: rgba(255, 252, 245, 0.98);
-    box-shadow: 0 8px 30px rgba(139, 94, 60, 0.12);
-    border-color: rgba(139, 94, 60, 0.2);
+    background: linear-gradient(160deg, #fffdf7 0%, #fff3d8 100%);
+    box-shadow: 0 8px 30px rgba(139, 94, 60, 0.14);
+    border-color: rgba(139, 94, 60, 0.22);
 }
 
 html.light-theme .novel-card:hover {
-    box-shadow: 0 20px 50px rgba(139, 94, 60, 0.18);
+    background: linear-gradient(160deg, #fffdf5 0%, #ffeec4 100%);
+    box-shadow: 0 20px 50px rgba(184, 94, 10, 0.24);
 }
 
 html.light-theme .novel-card-title {
@@ -622,13 +630,14 @@ html.light-theme .novel-card:hover .novel-card-title {
 }
 
 html.light-theme .no-schema-row {
-    background: rgba(255, 252, 245, 0.98);
-    box-shadow: 0 6px 24px rgba(139, 94, 60, 0.1);
-    border-color: rgba(139, 94, 60, 0.2);
+    background: linear-gradient(160deg, #fffdf7 0%, #fff4dd 100%);
+    box-shadow: 0 6px 24px rgba(139, 94, 60, 0.12);
+    border-color: rgba(139, 94, 60, 0.22);
 }
 
 html.light-theme .no-schema-row:hover {
-    box-shadow: 0 10px 32px rgba(139, 94, 60, 0.16);
+    background: linear-gradient(160deg, #fffdf5 0%, #ffeec6 100%);
+    box-shadow: 0 10px 32px rgba(184, 94, 10, 0.22);
 }
 
 html.light-theme .no-schema-body h3 {
@@ -640,9 +649,9 @@ html.light-theme .no-schema-reason {
 }
 
 html.light-theme .plan-list {
-    background: rgba(255, 252, 245, 0.98);
-    box-shadow: 0 10px 40px rgba(139, 94, 60, 0.1);
-    border-color: rgba(139, 94, 60, 0.2);
+    background: linear-gradient(160deg, #fffdf7 0%, #fff4dc 100%);
+    box-shadow: 0 10px 40px rgba(139, 94, 60, 0.12);
+    border-color: rgba(139, 94, 60, 0.22);
 }
 
 html.light-theme .theme-toggle {
@@ -672,5 +681,7 @@ html.light-theme .back-link:hover {
 }
 
 html.light-theme footer {
-    background: linear-gradient(135deg, #8b5e3c 0%, #6d4c2e 100%);
+    background:
+        radial-gradient(ellipse at 20% 0%, rgba(255, 214, 150, 0.25) 0%, transparent 60%),
+        linear-gradient(135deg, #a97142 0%, #8b5e3c 45%, #5d4030 100%);
 }
