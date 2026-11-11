@@ -15,10 +15,12 @@
 
     function read(key) {
         try {
-            return localStorage.getItem(key);
+            var value = localStorage.getItem(key);
+            if (value !== null) return value;
         } catch (e) {
-            return null;
+            // localStorage недоступен — используем cookie
         }
+        return readCookie(key);
     }
 
     function write(key, value) {
@@ -26,9 +28,29 @@
             localStorage.setItem(key, value);
             return true;
         } catch (e) {
-            // localStorage может быть недоступен при открытии через file://
+            // localStorage недоступен (приватный режим, запрет хранилища) — пишем в cookie
+        }
+        try {
+            document.cookie = key + '=' + encodeURIComponent(value) + '; path=/; max-age=31536000; SameSite=Lax';
+            return true;
+        } catch (e) {
             return false;
         }
+    }
+
+    function readCookie(key) {
+        try {
+            var parts = document.cookie ? document.cookie.split('; ') : [];
+            for (var i = 0; i < parts.length; i++) {
+                var pair = parts[i].split('=');
+                if (decodeURIComponent(pair[0]) === key) {
+                    return decodeURIComponent(pair.slice(1).join('='));
+                }
+            }
+        } catch (e) {
+            // cookie недоступны
+        }
+        return null;
     }
 
     function getTheme() {
@@ -92,6 +114,23 @@
         }
         if (e.key === KEY_LANG) {
             notify('lang', e.newValue === 'en' ? 'en' : 'ru', 'storage');
+        }
+    });
+
+    // Страница вернулась из кэша bfcache (кнопка «назад»): события storage
+    // за время кэширования не доставляются — перечитываем настройки сами.
+    window.addEventListener('pageshow', function (e) {
+        if (e && e.persisted) {
+            notify('theme', getTheme(), 'pageshow');
+            notify('lang', getLang(), 'pageshow');
+        }
+    });
+
+    // Вкладка снова активна — настройки могли измениться, пока она была в фоне
+    document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState === 'visible') {
+            notify('theme', getTheme(), 'visible');
+            notify('lang', getLang(), 'visible');
         }
     });
 
