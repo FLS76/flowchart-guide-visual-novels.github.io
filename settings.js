@@ -181,4 +181,59 @@
     } else {
         showLocalFileNotice();
     }
+
+    // ===== Сайт, открытый как локальные файлы (file://) =====
+    //
+    // В Firefox у каждого такого файла своё хранилище, и общие настройки
+    // между страницами невозможны. Единственный доступный канал — сам URL:
+    // тема и язык передаются дальше по ссылкам в виде ?t=...&l=...
+    var IS_FILE = location.protocol === 'file:';
+
+    function readStateFromUrl() {
+        if (!IS_FILE) return;
+        try {
+            var params = new URLSearchParams(location.search);
+            var t = params.get('t');
+            var l = params.get('l');
+            if (t === 'light' || t === 'dark') write(KEY_THEME, t);
+            if (l === 'ru' || l === 'en') write(KEY_LANG, l);
+            if (t || l) {
+                // служебные параметры убираем из адресной строки
+                history.replaceState(null, '', location.pathname + location.hash);
+            }
+        } catch (e) {
+            // старый браузер — остаётся вариант с localStorage
+        }
+    }
+
+    function propagateStateToLinks() {
+        if (!IS_FILE) return;
+        var t = getTheme();
+        var l = getLang();
+        var links = document.querySelectorAll('a[href]');
+        for (var i = 0; i < links.length; i++) {
+            var a = links[i];
+            var href = a.getAttribute('href') || '';
+            if (!href || href.charAt(0) === '#' || /^(https?:|mailto:|tel:|javascript:)/i.test(href)) continue;
+            var url;
+            try {
+                url = new URL(a.href, location.href);
+            } catch (e) {
+                continue;
+            }
+            if (url.protocol !== 'file:') continue;
+            url.searchParams.set('t', t);
+            url.searchParams.set('l', l);
+            a.setAttribute('href', url.href);
+        }
+    }
+
+    readStateFromUrl();
+
+    // Ссылки дополняются текущими настройками при каждом изменении
+    var originalNotify = notify;
+    notify = function (type, value, source) {
+        originalNotify(type, value, source);
+        if (IS_FILE) propagateStateToLinks();
+    };
 })();
