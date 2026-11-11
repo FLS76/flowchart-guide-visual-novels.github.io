@@ -63,27 +63,7 @@
         }
     }
 
-    function safeX(vw, sw, x) {
-        if (sw <= vw) return (vw - sw) / 2;
-        if (x > 0) return 0;
-        if (x < vw - sw) return vw - sw;
-        return x;
-    }
-
-    function safeY(vh, sh, y) {
-        if (sh <= vh) return (vh - sh) / 2;
-        if (y > 0) return 0;
-        if (y < vh - sh) return vh - sh;
-        return y;
-    }
-
     function applyTransform() {
-        var vw = viewport.clientWidth;
-        var vh = viewport.clientHeight;
-        var iw = imgEl.naturalWidth  || 800;
-        var ih = imgEl.naturalHeight || 600;
-        state.x = safeX(vw, iw * state.scale, state.x);
-        state.y = safeY(vh, ih * state.scale, state.y);
         canvas.style.transform = 'translate(' + state.x + 'px,' + state.y + 'px) scale(' + state.scale + ')';
         scaleLabel.textContent = Math.round(state.scale * 100) + '%';
     }
