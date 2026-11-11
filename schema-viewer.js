@@ -141,21 +141,37 @@
         if (!modal) buildModal();
 
         // Клик по любой схеме — открыть просмотровик.
-        // Используем capture-фазу чтобы перехватить ДО того как браузер обработает <a>.
+        // Capture-phase: срабатывает ДО того как браузер обработает <a href>.
         document.addEventListener('click', function (e) {
-            var target = e.target;
             // Игнорируем клики внутри самого просмотровика
-            if (modal && modal.contains(target)) return;
-            // Ищем img.schema-image или .schema-link
-            var img = target.closest('img.schema-image') ||
-                      (target.tagName === 'IMG' && target.classList.contains('schema-image'));
+            if (modal && modal.contains(e.target)) return;
+
+            // Ищем ближайший img.schema-image или self
+            var target = e.target;
+            var img = null;
+            if (target.tagName === 'IMG' && target.classList.contains('schema-image')) {
+                img = target;
+            } else if (target.classList.contains('schema-image')) {
+                img = target;
+            } else {
+                // Ищем img.schema-image среди родителей
+                var p = target;
+                for (var d = 0; d < 5; d++) {
+                    p = p.parentElement;
+                    if (!p) break;
+                    var found = p.querySelector('img.schema-image');
+                    if (found) { img = found; break; }
+                }
+            }
             if (!img) return;
+
             // Находим индекс
             var idx = -1;
             for (var i = 0; i < images.length; i++) {
                 if (images[i].url === img.src) { idx = i; break; }
             }
             if (idx < 0) idx = 0;
+
             e.preventDefault();
             e.stopPropagation();
             openViewer(idx);
