@@ -63,7 +63,33 @@
         }
     }
 
+    function clampPosition() {
+        var vw = viewport.clientWidth;
+        var vh = viewport.clientHeight;
+        var iw = imgEl.naturalWidth  || 800;
+        var ih = imgEl.naturalHeight || 600;
+        var sw = iw * state.scale;
+        var sh = ih * state.scale;
+
+        // Картинка меньше viewport — центрируем
+        if (sw < vw) state.x = (vw - sw) / 2;
+        // Картинка больше viewport — не даём отодвинуть так чтобы её не было видно
+        else {
+            // state.x не может быть больше 0 (правый край ушёл за правый край viewport)
+            // state.x не может быть меньше vw-sw (левый край ушёл за левый край viewport)
+            if (state.x > 0) state.x = 0;
+            if (state.x < vw - sw) state.x = vw - sw;
+        }
+
+        if (sh < vh) state.y = (vh - sh) / 2;
+        else {
+            if (state.y > 0) state.y = 0;
+            if (state.y < vh - sh) state.y = vh - sh;
+        }
+    }
+
     function applyTransform() {
+        clampPosition();
         canvas.style.transform = 'translate(' + state.x + 'px,' + state.y + 'px) scale(' + state.scale + ')';
         scaleLabel.textContent = Math.round(state.scale * 100) + '%';
     }
