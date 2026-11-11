@@ -52,8 +52,10 @@ https://ru.squarefaction.com/member/u108729/blog/21498-prohozhdeniya-shemy-vizua
 
 ## Лицензия
 
-Контент (блок-схемы) принадлежит автору (проверщик).
-Дизайн сайта — CC BY-NC-ND 4.0.
+- **Дизайн сайта** (HTML, CSS, JavaScript): CC BY-NC-ND 4.0
+- **Блок-схемы**: авторское право проверщик (NRFX), все права защищены
+
+Полный текст лицензии — файл `LICENSE`.
 
 ---
 
