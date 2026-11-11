@@ -63,33 +63,27 @@
         }
     }
 
-    function clampPosition() {
+    function safeX(vw, sw, x) {
+        if (sw <= vw) return (vw - sw) / 2;
+        if (x > 0) return 0;
+        if (x < vw - sw) return vw - sw;
+        return x;
+    }
+
+    function safeY(vh, sh, y) {
+        if (sh <= vh) return (vh - sh) / 2;
+        if (y > 0) return 0;
+        if (y < vh - sh) return vh - sh;
+        return y;
+    }
+
+    function applyTransform() {
         var vw = viewport.clientWidth;
         var vh = viewport.clientHeight;
         var iw = imgEl.naturalWidth  || 800;
         var ih = imgEl.naturalHeight || 600;
-        var sw = iw * state.scale;
-        var sh = ih * state.scale;
-
-        // Картинка меньше viewport — центрируем
-        if (sw < vw) state.x = (vw - sw) / 2;
-        // Картинка больше viewport — не даём отодвинуть так чтобы её не было видно
-        else {
-            // state.x не может быть больше 0 (правый край ушёл за правый край viewport)
-            // state.x не может быть меньше vw-sw (левый край ушёл за левый край viewport)
-            if (state.x > 0) state.x = 0;
-            if (state.x < vw - sw) state.x = vw - sw;
-        }
-
-        if (sh < vh) state.y = (vh - sh) / 2;
-        else {
-            if (state.y > 0) state.y = 0;
-            if (state.y < vh - sh) state.y = vh - sh;
-        }
-    }
-
-    function applyTransform() {
-        clampPosition();
+        state.x = safeX(vw, iw * state.scale, state.x);
+        state.y = safeY(vh, ih * state.scale, state.y);
         canvas.style.transform = 'translate(' + state.x + 'px,' + state.y + 'px) scale(' + state.scale + ')';
         scaleLabel.textContent = Math.round(state.scale * 100) + '%';
     }
@@ -123,7 +117,6 @@
     function zoomAt(cx, cy, factor) {
         var ns = Math.min(SCALE_MAX, Math.max(SCALE_MIN, state.scale * factor));
         var ratio = ns / state.scale;
-        // Зум к точке курсора: сдвигаем так чтобы точка под курсором осталась на месте
         state.x = cx - ratio * (cx - state.x);
         state.y = cy - ratio * (cy - state.y);
         state.scale = ns;
