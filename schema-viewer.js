@@ -1,166 +1,83 @@
-// Просмотровик блок-схем — модальное окно с масштабированием,
-// перетаскиванием, навигацией между схемами новеллы.
-//
-// Управление:
-//   Колёсико          — масштаб (+/−)
-//   Ctrl + колёсико   — зум к курсору
-//   Перетаскивание    — панорама
-//   ← / →            — следующая / предыдущая схема
-//   Esc               — закрыть
-//   + / −            — масштаб
-//   1                —.fit (100%)
-//
-// Все схемы новеллы собираются автоматически из ссылкок .schema-block.
+// Просмотровик блок-схем — модальное окно с зумом, паном, навигацией.
+// Клик по любой схеме открывает просмотровик. Esc / клик по фону — закрыть.
+// Колёсико — масштаб, перетаскивание — панорама, ← → — навигация.
 (function () {
     'use strict';
 
-    var SCALE_MIN = 0.1;
-    var SCALE_MAX = 8;
-    var SCALE_STEP = 1.25;
-    var PAN_SPEED = 0.05;
+    var SCALE_MIN = 0.05;
+    var SCALE_MAX = 10;
+    var SCALE_STEP = 1.2;
 
-    var state = { scale: 1, x: 0, y: 0, dragging: false, startX: 0, startY: 0, startPanX: 0, startPanY: 0 };
-    var images = [];   // [{url, alt, index}]
-    var currentIndex = 0;
+    var state = { scale: 1, x: 0, y: 0, dragging: false, sx: 0, sy: 0, spx: 0, spy: 0 };
+    var images = [];
+    var currentIdx = 0;
     var modal = null;
     var overlay = null;
     var viewport = null;
     var canvas = null;
-    var img = null;
-    var navPrev = null;
-    var navNext = null;
-    var scaleLabel = null;
+    var imgEl = null;
     var closeBtn = null;
     var fitBtn = null;
-    var zoomIn = null;
-    var zoomOut = null;
+    var zoomInBtn = null;
+    var zoomOutBtn = null;
+    var prevBtn = null;
+    var nextBtn = null;
+    var scaleLabel = null;
     var counter = null;
-
-    function esc(n) {
-        var d = document.createElement('div');
-        d.textContent = n;
-        return d.innerHTML;
-    }
 
     function buildModal() {
         modal = document.createElement('div');
         modal.className = 'schema-viewer';
-        modal.setAttribute('role', 'dialog');
-        modal.setAttribute('aria-modal', 'true');
-        modal.setAttribute('aria-label', 'Просмотровик блок-схемы');
-
         modal.innerHTML =
-            '<div class="viewer-overlay"></div>' +
-            '<div class="viewer-viewport">' +
-                '<div class="viewer-canvas">' +
-                    '<img class="viewer-img" draggable="false" alt="">' +
+            '<div class="sv-overlay"></div>' +
+            '<div class="sv-viewport">' +
+                '<div class="sv-canvas">' +
+                    '<img class="sv-img" draggable="false">' +
                 '</div>' +
             '</div>' +
-            '<div class="viewer-controls">' +
-                '<button class="viewer-btn viewer-close" aria-label="Закрыть">✕</button>' +
-                '<button class="viewer-btn viewer-fit" aria-label="По размеру">⊡</button>' +
-                '<button class="viewer-btn viewer-zoom-out" aria-label="Уменьшить">−</button>' +
-                '<span class="viewer-scale">100%</span>' +
-                '<button class="viewer-btn viewer-zoom-in" aria-label="Увеличить">+</button>' +
-                '<span class="viewer-counter"></span>' +
-                '<button class="viewer-btn viewer-prev" aria-label="Предыдущая схема">‹</button>' +
-                '<button class="viewer-btn viewer-next" aria-label="Следующая схема">›</button>' +
+            '<div class="sv-controls">' +
+                '<button class="sv-btn sv-close" type="button">✕</button>' +
+                '<button class="sv-btn sv-fit" type="button" title="По размеру">⊡</button>' +
+                '<button class="sv-btn sv-zo" type="button">−</button>' +
+                '<span class="sv-scale">100%</span>' +
+                '<button class="sv-btn sv-zi" type="button">+</button>' +
+                '<span class="sv-counter"></span>' +
+                '<button class="sv-btn sv-prev" type="button">‹</button>' +
+                '<button class="sv-btn sv-next" type="button">›</button>' +
             '</div>';
 
-        overlay = modal.querySelector('.viewer-overlay');
-        viewport = modal.querySelector('.viewer-viewport');
-        canvas = modal.querySelector('.viewer-canvas');
-        img = modal.querySelector('.viewer-img');
-        closeBtn = modal.querySelector('.viewer-close');
-        fitBtn = modal.querySelector('.viewer-fit');
-        zoomIn = modal.querySelector('.viewer-zoom-in');
-        zoomOut = modal.querySelector('.viewer-zoom-out');
-        scaleLabel = modal.querySelector('.viewer-scale');
-        counter = modal.querySelector('.viewer-counter');
-        navPrev = modal.querySelector('.viewer-prev');
-        navNext = modal.querySelector('.viewer-next');
-
         document.body.appendChild(modal);
+
+        overlay   = modal.querySelector('.sv-overlay');
+        viewport  = modal.querySelector('.sv-viewport');
+        canvas    = modal.querySelector('.sv-canvas');
+        imgEl     = modal.querySelector('.sv-img');
+        closeBtn  = modal.querySelector('.sv-close');
+        fitBtn    = modal.querySelector('.sv-fit');
+        zoomInBtn = modal.querySelector('.sv-zi');
+        zoomOutBtn= modal.querySelector('.sv-zo');
+        prevBtn   = modal.querySelector('.sv-prev');
+        nextBtn   = modal.querySelector('.sv-next');
+        scaleLabel= modal.querySelector('.sv-scale');
+        counter   = modal.querySelector('.sv-counter');
     }
 
     function gatherImages() {
         images = [];
-        // Сначала ищем .schema-block (на страницах новелл)
-        var blocks = document.querySelectorAll('.schema-block');
-        blocks.forEach(function (block, i) {
-            var a = block.querySelector('a[href]');
-            if (!a) return;
-            var href = a.getAttribute('href');
-            var thumb = block.querySelector('img');
-            var alt = thumb ? thumb.alt : '';
-            var url = href;
-            if (/\.html$/.test(href)) {
-                var innerImg = block.querySelector('img');
-                if (innerImg) url = innerImg.src || innerImg.getAttribute('data-src') || href;
-            }
-            if (href.match(/\.png$/i)) url = href;
-            images.push({ url: url, alt: alt, index: i });
+        // Ищем все img.schema-image на странице
+        var imgs = document.querySelectorAll('img.schema-image');
+        imgs.forEach(function (el, i) {
+            var url = el.src || el.getAttribute('data-src');
+            if (!url) return;
+            images.push({ url: url, alt: el.alt || '' });
         });
-
-        // Если не нашли — ищем .schema-link (на страницах схем)
+        // Если нет — ищем img внутри .schema-link
         if (images.length === 0) {
-            var links = document.querySelectorAll('.schema-link');
-            links.forEach(function (link, i) {
-                var href = link.getAttribute('href');
-                var innerImg = link.querySelector('img');
-                var url = href || (innerImg ? innerImg.src : null);
-                var alt = innerImg ? innerImg.alt : '';
-                if (url) images.push({ url: url, alt: alt, index: i });
+            var links = document.querySelectorAll('.schema-link img');
+            links.forEach(function (el, i) {
+                images.push({ url: el.src, alt: el.alt || '' });
             });
         }
-
-        // Fallback: ищем img.schema-image напрямую
-        if (images.length === 0) {
-            var imgs = document.querySelectorAll('img.schema-image');
-            imgs.forEach(function (el, i) {
-                images.push({ url: el.src, alt: el.alt, index: i });
-            });
-        }
-    }
-
-    function openViewer(index) {
-        if (images.length === 0) return;
-        if (index === undefined) index = 0;
-        currentIndex = index;
-        if (!modal) buildModal();
-
-        modal.classList.add('viewer-open');
-        document.body.style.overflow = 'hidden';
-        modal.focus();
-        updateImage();
-        updateCounter();
-    }
-
-    function updateImage() {
-        var item = images[currentIndex];
-        if (!item) return;
-        img.src = item.url;
-        img.alt = item.alt;
-        state.scale = 1;
-        state.x = 0;
-        state.y = 0;
-        applyTransform();
-        updateCounter();
-        updateNav();
-    }
-
-    function updateCounter() {
-        if (images.length > 1) {
-            counter.textContent = (currentIndex + 1) + ' / ' + images.length;
-            counter.style.display = '';
-        } else {
-            counter.style.display = 'none';
-        }
-    }
-
-    function updateNav() {
-        navPrev.style.visibility = currentIndex > 0 ? 'visible' : 'hidden';
-        navNext.style.visibility = currentIndex < images.length - 1 ? 'visible' : 'hidden';
     }
 
     function applyTransform() {
@@ -168,183 +85,190 @@
         scaleLabel.textContent = Math.round(state.scale * 100) + '%';
     }
 
+    function showImage(idx) {
+        if (!images[idx]) return;
+        currentIdx = idx;
+        imgEl.src = images[idx].url;
+        imgEl.alt = images[idx].alt;
+        state.scale = 1;
+        state.x = 0;
+        state.y = 0;
+        applyTransform();
+        counter.textContent = images.length > 1 ? (idx + 1) + ' / ' + images.length : '';
+        prevBtn.style.visibility = idx > 0 ? 'visible' : 'hidden';
+        nextBtn.style.visibility = idx < images.length - 1 ? 'visible' : 'hidden';
+    }
+
+    function fitImage() {
+        var vw = viewport.clientWidth;
+        var vh = viewport.clientHeight;
+        var iw = imgEl.naturalWidth  || 800;
+        var ih = imgEl.naturalHeight || 600;
+        var s = Math.min(vw / iw, vh / ih) * 0.9;
+        state.scale = s;
+        state.x = (vw - iw * s) / 2;
+        state.y = (vh - ih * s) / 2;
+        applyTransform();
+    }
+
+    function zoomAt(cx, cy, factor) {
+        var ns = Math.min(SCALE_MAX, Math.max(SCALE_MIN, state.scale * factor));
+        var r = ns / state.scale;
+        state.x = cx - r * (cx - state.x);
+        state.y = cy - r * (cy - state.y);
+        state.scale = ns;
+        applyTransform();
+    }
+
+    function openViewer(idx) {
+        if (images.length === 0) return;
+        if (!modal) buildModal();
+        modal.classList.add('sv-open');
+        document.body.style.overflow = 'hidden';
+        showImage(idx !== undefined ? idx : 0);
+    }
+
     function closeViewer() {
         if (!modal) return;
-        modal.classList.remove('viewer-open');
+        modal.classList.remove('sv-open');
         document.body.style.overflow = '';
         state.dragging = false;
     }
 
-    function zoomTo(newScale, cx, cy) {
-        newScale = Math.min(SCALE_MAX, Math.max(SCALE_MIN, newScale));
-        var vw = viewport.clientWidth;
-        var vh = viewport.clientHeight;
-        if (cx === undefined) { cx = vw / 2; cy = vh / 2; }
-        var ratio = newScale / state.scale;
-        state.x = cx - ratio * (cx - state.x);
-        state.y = cy - ratio * (cy - state.y);
-        state.scale = newScale;
-        applyTransform();
-    }
-
-    function fitToViewport() {
-        var vw = viewport.clientWidth;
-        var vh = viewport.clientHeight;
-        var iw = img.naturalWidth || 800;
-        var ih = img.naturalHeight || 600;
-        var scale = Math.min(vw / iw, vh / ih) * 0.92;
-        state.scale = scale;
-        state.x = (vw - iw * scale) / 2;
-        state.y = (vh - ih * scale) / 2;
-        applyTransform();
-    }
-
-    function prevImage() {
-        if (currentIndex > 0) { currentIndex--; updateImage(); }
-    }
-
-    function nextImage() {
-        if (currentIndex < images.length - 1) { currentIndex++; updateImage(); }
-    }
-
-    // ===== Events =====
-
-    function onMouseDown(e) {
-        if (e.button !== 0) return;
-        state.dragging = true;
-        state.startX = e.clientX;
-        state.startY = e.clientY;
-        state.startPanX = state.x;
-        state.startPanY = state.y;
-        viewport.style.cursor = 'grabbing';
-        e.preventDefault();
-    }
-
-    function onMouseMove(e) {
-        if (!state.dragging) return;
-        state.x = state.startPanX + (e.clientX - state.startX);
-        state.y = state.startPanY + (e.clientY - state.startY);
-        applyTransform();
-    }
-
-    function onMouseUp() {
-        state.dragging = false;
-        viewport.style.cursor = '';
-    }
-
-    function onWheel(e) {
-        if (e.ctrlKey) {
-            e.preventDefault();
-            var rect = viewport.getBoundingClientRect();
-            var cx = e.clientX - rect.left;
-            var cy = e.clientY - rect.top;
-            var delta = e.deltaY < 0 ? 1 / SCALE_STEP : SCALE_STEP;
-            zoomTo(state.scale * delta, cx, cy);
-        } else {
-            e.preventDefault();
-            var rect = viewport.getBoundingClientRect();
-            var cx = e.clientX - rect.left;
-            var cy = e.clientY - rect.top;
-            var delta = e.deltaY < 0 ? 1 / SCALE_STEP : SCALE_STEP;
-            zoomTo(state.scale * delta, cx, cy);
-        }
-    }
-
-    function onKeyDown(e) {
-        switch (e.key) {
-            case 'Escape':      closeViewer(); break;
-            case 'ArrowLeft':   prevImage(); break;
-            case 'ArrowRight':  nextImage(); break;
-            case '+': case '=': zoomTo(state.scale * SCALE_STEP); break;
-            case '-': case '_': zoomTo(state.scale / SCALE_STEP); break;
-            case '1':           fitToViewport(); break;
-        }
-    }
-
-    function onTouchStart(e) {
-        if (e.touches.length === 1) {
-            state.dragging = true;
-            state.startX = e.touches[0].clientX;
-            state.startY = e.touches[0].clientY;
-            state.startPanX = state.x;
-            state.startPanY = state.y;
-        }
-    }
-
-    function onTouchMove(e) {
-        if (!state.dragging || e.touches.length !== 1) return;
-        state.x = state.startPanX + (e.touches[0].clientX - state.startX);
-        state.y = state.startPanY + (e.touches[0].clientY - state.startY);
-        applyTransform();
-        e.preventDefault();
-    }
-
-    function onTouchEnd() { state.dragging = false; }
-
     function init() {
         gatherImages();
         if (images.length === 0) return;
-
-        // Создаём модал сразу, чтобы все элементы были доступны
         if (!modal) buildModal();
 
-        // Клик по схеме — открыть просмотровик
-        document.querySelectorAll('.schema-link, .schema-image, .schema-block').forEach(function (el) {
-            el.addEventListener('click', function (e) {
-                // Обычная ссылка на HTML-страницу — не перехватываем
-                if (el.tagName === 'A' && el.href && !el.href.match(/\.png$/i) && !el.classList.contains('schema-link')) return;
-                var idx = -1;
-                var item = images.find(function (it, i) {
-                    if (it.url === el.src || it.url === el.getAttribute('href')) { idx = i; return true; }
-                    return false;
-                });
-                if (idx >= 0) {
-                    e.preventDefault();
-                    openViewer(idx);
-                } else if (!el.href || el.href.match(/\.png$/i)) {
-                    e.preventDefault();
-                    openViewer(0);
-                }
-            });
-        });
+        // Клик по любой схеме — открыть просмотровик.
+        // Используем capture-фазу чтобы перехватить ДО того как браузер обработает <a>.
+        document.addEventListener('click', function (e) {
+            var target = e.target;
+            // Игнорируем клики внутри самого просмотровика
+            if (modal && modal.contains(target)) return;
+            // Ищем img.schema-image или .schema-link
+            var img = target.closest('img.schema-image') ||
+                      (target.tagName === 'IMG' && target.classList.contains('schema-image'));
+            if (!img) return;
+            // Находим индекс
+            var idx = -1;
+            for (var i = 0; i < images.length; i++) {
+                if (images[i].url === img.src) { idx = i; break; }
+            }
+            if (idx < 0) idx = 0;
+            e.preventDefault();
+            e.stopPropagation();
+            openViewer(idx);
+        }, true);
 
-        // Клик по overlay — закрыть
+        // Клик по фону — закрыть
         overlay.addEventListener('click', closeViewer);
 
         // Кнопки
         closeBtn.addEventListener('click', closeViewer);
-        fitBtn.addEventListener('click', fitToViewport);
-        zoomIn.addEventListener('click', function () { zoomTo(state.scale * SCALE_STEP); });
-        zoomOut.addEventListener('click', function () { zoomTo(state.scale / SCALE_STEP); });
-        navPrev.addEventListener('click', prevImage);
-        navNext.addEventListener('click', nextImage);
+        fitBtn.addEventListener('click', fitImage);
+        zoomInBtn.addEventListener('click', function () { zoomAt(viewport.clientWidth / 2, viewport.clientHeight / 2, SCALE_STEP); });
+        zoomOutBtn.addEventListener('click', function () { zoomAt(viewport.clientWidth / 2, viewport.clientHeight / 2, 1 / SCALE_STEP); });
+        prevBtn.addEventListener('click', function () { if (currentIdx > 0) showImage(currentIdx - 1); });
+        nextBtn.addEventListener('click', function () { if (currentIdx < images.length - 1) showImage(currentIdx + 1); });
 
-        // Мышь
-        viewport.addEventListener('mousedown', onMouseDown);
-        document.addEventListener('mousemove', onMouseMove);
-        document.addEventListener('mouseup', onMouseUp);
-        viewport.addEventListener('wheel', onWheel, { passive: false });
+        // Панорама мышью
+        viewport.addEventListener('mousedown', function (e) {
+            if (e.button !== 0) return;
+            state.dragging = true;
+            state.sx = e.clientX;
+            state.sy = e.clientY;
+            state.spx = state.x;
+            state.spy = state.y;
+            viewport.style.cursor = 'grabbing';
+            e.stopPropagation();
+        });
+        document.addEventListener('mousemove', function (e) {
+            if (!state.dragging) return;
+            state.x = state.spx + (e.clientX - state.sx);
+            state.y = state.spy + (e.clientY - state.sy);
+            applyTransform();
+        });
+        document.addEventListener('mouseup', function () {
+            state.dragging = false;
+            viewport.style.cursor = '';
+        });
 
-        // Тач
-        viewport.addEventListener('touchstart', onTouchStart, { passive: true });
-        viewport.addEventListener('touchmove', onTouchMove, { passive: false });
-        viewport.addEventListener('touchend', onTouchEnd);
+        // Зум колёсиком
+        viewport.addEventListener('wheel', function (e) {
+            e.preventDefault();
+            var rect = viewport.getBoundingClientRect();
+            var cx = e.clientX - rect.left;
+            var cy = e.clientY - rect.top;
+            var factor = e.deltaY < 0 ? SCALE_STEP : 1 / SCALE_STEP;
+            zoomAt(cx, cy, factor);
+        }, { passive: false });
+
+        // Тач-управление
+        var touchStartDist = 0;
+        viewport.addEventListener('touchstart', function (e) {
+            if (e.touches.length === 1) {
+                state.dragging = true;
+                state.sx = e.touches[0].clientX;
+                state.sy = e.touches[0].clientY;
+                state.spx = state.x;
+                state.spy = state.y;
+            } else if (e.touches.length === 2) {
+                state.dragging = false;
+                var dx = e.touches[0].clientX - e.touches[1].clientX;
+                var dy = e.touches[0].clientY - e.touches[1].clientY;
+                touchStartDist = Math.sqrt(dx * dx + dy * dy);
+            }
+        }, { passive: true });
+        viewport.addEventListener('touchmove', function (e) {
+            if (e.touches.length === 1 && state.dragging) {
+                state.x = state.spx + (e.touches[0].clientX - state.sx);
+                state.y = state.spy + (e.touches[0].clientY - state.sy);
+                applyTransform();
+                e.preventDefault();
+            } else if (e.touches.length === 2) {
+                var dx = e.touches[0].clientX - e.touches[1].clientX;
+                var dy = e.touches[0].clientY - e.touches[1].clientY;
+                var dist = Math.sqrt(dx * dx + dy * dy);
+                if (touchStartDist > 0) {
+                    var factor = dist / touchStartDist;
+                    var rect = viewport.getBoundingClientRect();
+                    var cx = ((e.touches[0].clientX + e.touches[1].clientX) / 2) - rect.left;
+                    var cy = ((e.touches[0].clientY + e.touches[1].clientY) / 2) - rect.top;
+                    zoomAt(cx, cy, factor);
+                }
+                touchStartDist = dist;
+                e.preventDefault();
+            }
+        }, { passive: false });
+        viewport.addEventListener('touchend', function () {
+            state.dragging = false;
+            touchStartDist = 0;
+        });
 
         // Клавиатура
-        document.addEventListener('keydown', onKeyDown);
+        document.addEventListener('keydown', function (e) {
+            if (!modal || !modal.classList.contains('sv-open')) return;
+            switch (e.key) {
+                case 'Escape':    closeViewer(); break;
+                case 'ArrowLeft': if (currentIdx > 0) showImage(currentIdx - 1); break;
+                case 'ArrowRight':if (currentIdx < images.length - 1) showImage(currentIdx + 1); break;
+                case '+': case '=': zoomAt(viewport.clientWidth / 2, viewport.clientHeight / 2, SCALE_STEP); break;
+                case '-': case '_': zoomAt(viewport.clientWidth / 2, viewport.clientHeight / 2, 1 / SCALE_STEP); break;
+                case '1':          fitImage(); break;
+            }
+        });
 
         // Resize
         window.addEventListener('resize', function () {
-            if (modal && modal.classList.contains('viewer-open')) fitToViewport();
+            if (modal && modal.classList.contains('sv-open')) fitImage();
         });
 
-        // Если картинка не загрузилась — всё равно открываем (покажет ошибку)
-        img.addEventListener('error', function () {
-            canvas.innerHTML = '<p class="viewer-error">Изображение не загружено</p>';
+        imgEl.addEventListener('error', function () {
+            canvas.innerHTML = '<p class="sv-error">Изображение не загружено</p>';
         });
     }
 
-    // Expose globally for inline handlers
     window.SchemaViewer = { open: openViewer, close: closeViewer };
 
     if (document.readyState === 'loading') {
