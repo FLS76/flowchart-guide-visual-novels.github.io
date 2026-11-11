@@ -141,4 +141,44 @@
         setLang: setLang,
         on: on
     };
+
+    // Firefox даёт каждому файлу, открытому как file://, отдельное хранилище.
+    // Из-за этого общая тема и язык между страницами невозможны — предупреждаем.
+    function showLocalFileNotice() {
+        if (location.protocol !== 'file:') return;
+        if (document.getElementById('localFileNotice')) return;
+
+        var lang = getLang();
+        var text = lang === 'en'
+            ? 'The site is opened as a local file (file://). Firefox gives every file its own storage, so the theme and language are not shared between pages. Start the local server (K:\\Сайты\\start-site.cmd) and open http://localhost:8765'
+            : 'Сайт открыт как локальный файл (file://). Firefox даёт каждому файлу отдельное хранилище, поэтому тема и язык не общие между страницами. Запустите локальный сервер (K:\\Сайты\\start-site.cmd) и откройте http://localhost:8765';
+
+        var box = document.createElement('div');
+        box.id = 'localFileNotice';
+        box.textContent = text;
+        box.setAttribute('role', 'note');
+        box.style.cssText = [
+            'position:fixed',
+            'left:12px',
+            'right:12px',
+            'bottom:12px',
+            'z-index:9999',
+            'padding:12px 16px',
+            'border-radius:12px',
+            'border:1px solid rgba(212,117,10,.45)',
+            'background:rgba(255,250,240,.98)',
+            'color:#5d4e37',
+            'font-family:inherit',
+            'font-size:14px',
+            'line-height:1.5',
+            'box-shadow:0 10px 30px rgba(0,0,0,.18)'
+        ].join(';');
+        document.body.appendChild(box);
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', showLocalFileNotice);
+    } else {
+        showLocalFileNotice();
+    }
 })();
