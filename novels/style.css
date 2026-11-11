@@ -994,6 +994,42 @@ html.light-theme .novel-info p strong {
     color: #8b5e3c;
 }
 
+/* Список других названий — каждое на своей строке */
+.alt-titles p {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 8px;
+    color: #6d5c4a;
+}
+
+.alt-titles p::before {
+    content: '•';
+    position: absolute;
+    left: 4px;
+    color: rgba(212, 117, 10, 0.75);
+}
+
+.alt-titles p:last-child {
+    margin-bottom: 0;
+}
+
+.alt-titles p.no-alternatives {
+    color: #8a7a66;
+    font-style: italic;
+}
+
+.alt-titles p.no-alternatives::before {
+    content: none;
+}
+
+html.light-theme .alt-titles p {
+    color: #5d4e37;
+}
+
+html.light-theme .alt-titles p.no-alternatives {
+    color: #8a7a66;
+}
+
 html.light-theme .novel-info p a {
     color: #b8650a;
 }
