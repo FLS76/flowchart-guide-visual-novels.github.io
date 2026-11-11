@@ -100,10 +100,10 @@ body::before {
 .site-name {
     color: white;
     text-decoration: none;
-    font-size: 1.02em;
+    font-size: 0.95em;
     font-weight: 600;
     letter-spacing: 0.01em;
-    white-space: nowrap;
+    white-space: normal;
 }
 
 .site-name:hover {
@@ -785,6 +785,13 @@ footer .back-link {
 
     .page-header .subtitle {
         white-space: normal;
+    }
+
+    /* Кнопка «Назад» компактнее, чтобы кнопки языка и темы остались в одном ряду */
+    .topbar .back-link,
+    .page-header .back-link {
+        padding: 8px 12px;
+        font-size: 0.88em;
     }
 
     main.container {

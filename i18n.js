@@ -12,8 +12,8 @@
 
     var DICT = {
         // ===== Главная страница =====
-        "Прохождения визуальных новелл в виде блок-схем": "Visual Novel Walkthroughs as Flowcharts",
-        "Руководства по прохождению визуальных новелл в виде блок-схем": "Visual novel walkthrough guides in flowchart form",
+        "Руководства для визуальных новелл в виде блок-схем": "Flowchart guide visual novels",
+        "Прохождения визуальных новелл в виде блок-схем": "Visual novel walkthroughs as flowcharts",
         "О проекте": "About the project",
         "Сделано": "Completed",
         "В планах": "Planned",
@@ -55,7 +55,6 @@
         "проверщик (NRFX)": "проверщик (NRFX)",
 
         // ===== Общие элементы страниц новелл и схем =====
-        "Блок-схемы визуальных новелл": "Visual Novel Flowcharts",
         "← Назад к списку": "← Back to the list",
         "← Назад к списку схем": "← Back to the schema list",
         "Общая информация": "General information",
@@ -252,7 +251,7 @@
             .replace(/Эпизод 1/g, 'Episode 1')
             .replace(/Эпизод 2/g, 'Episode 2')
             .replace(/Амнея28: две вечности/g, 'Amneya28: Two Eternities')
-            .replace(/ — Прохождения визуальных новелл в виде блок-схем$/, ' — Visual Novel Walkthroughs');
+            .replace(/ — Руководства для визуальных новелл в виде блок-схем$/, ' — Flowchart guide visual novels');
     }
 
     function translateAttribute(value) {
