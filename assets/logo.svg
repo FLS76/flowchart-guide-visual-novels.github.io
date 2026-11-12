@@ -13,24 +13,21 @@
 
   <rect width="240" height="240" rx="52" fill="url(#bg)"/>
 
-  <!-- Блоки схемы -->
-  <g fill="none" stroke="url(#line)" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+  <!-- Структура как на favicon: блок -> узел -> развилка -> два блока -->
+  <g fill="none" stroke="url(#line)" stroke-width="8" stroke-linejoin="round" stroke-linecap="round">
     <!-- верхний блок -->
-    <rect x="72" y="40" width="96" height="44" rx="8"/>
+    <rect x="68" y="46" width="104" height="42" rx="6"/>
+    <!-- спуск от блока к узлу -->
+    <path d="M120 88 v14"/>
     <!-- развилка -->
-    <path d="M120 84 v22"/>
-    <path d="M120 106 h-44 v14"/>
-    <path d="M120 106 h44 v14"/>
+    <path d="M74 118 h92"/>
+    <path d="M74 118 v14"/>
+    <path d="M166 118 v14"/>
     <!-- нижние блоки -->
-    <rect x="34" y="120" width="84" height="40" rx="8"/>
-    <rect x="122" y="120" width="84" height="40" rx="8"/>
-    <!-- хвост -->
-    <path d="M120 160 v22"/>
-    <path d="M120 182 h-30"/>
-    <path d="M120 182 h30"/>
+    <rect x="30" y="132" width="88" height="40" rx="6"/>
+    <rect x="122" y="132" width="88" height="40" rx="6"/>
   </g>
 
-  <!-- точки на развилках -->
-  <circle cx="120" cy="106" r="6" fill="#f79c1e"/>
-  <circle cx="120" cy="182" r="5" fill="#8fa4ff"/>
+  <!-- узел -->
+  <circle cx="120" cy="102" r="6" fill="#f79c1e"/>
 </svg>
