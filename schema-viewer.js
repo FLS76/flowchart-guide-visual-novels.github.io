@@ -173,19 +173,19 @@
             '<div class="sv-minimap">',
             '    <img class="sv-minimap-img" alt="">',
             '    <div class="sv-minimap-window"></div>',
-            '    <div class="sv-hint">' +
-            '        <button type="button" class="sv-hint-btn" data-act="hint">?</button>' +
-            '        <div class="sv-hint-panel">' +
-            '            <div class="sv-hint-row"><kbd>Esc</kbd><span class="sv-hint-key"></span></div>' +
-            '            <div class="sv-hint-row"><kbd>+</kbd><kbd>−</kbd><span class="sv-hint-key"></span></div>' +
-            '            <div class="sv-hint-row"><kbd>0</kbd><span class="sv-hint-key"></span></div>' +
-            '            <div class="sv-hint-row"><kbd>1</kbd><span class="sv-hint-key"></span></div>' +
-            '            <div class="sv-hint-row"><kbd>W</kbd><span class="sv-hint-key"></span></div>' +
-            '            <div class="sv-hint-row"><kbd>H</kbd><span class="sv-hint-key"></span></div>' +
-            '            <div class="sv-hint-row"><kbd>M</kbd><span class="sv-hint-key"></span></div>' +
-            '            <div class="sv-hint-row"><kbd>F</kbd><span class="sv-hint-key"></span></div>' +
-            '            <div class="sv-hint-row"><kbd>←</kbd><kbd>→</kbd><span class="sv-hint-key"></span></div>' +
-            '        </div>' +
+            '</div>',
+            '<div class="sv-hint">' +
+            '    <button type="button" class="sv-hint-btn" data-act="hint" aria-label="Подсказки">?</button>' +
+            '    <div class="sv-hint-panel">' +
+            '        <div class="sv-hint-row"><kbd>Esc</kbd><span class="sv-hint-key"></span></div>' +
+            '        <div class="sv-hint-row"><kbd>+</kbd><kbd>−</kbd><span class="sv-hint-key"></span></div>' +
+            '        <div class="sv-hint-row"><kbd>0</kbd><span class="sv-hint-key"></span></div>' +
+            '        <div class="sv-hint-row"><kbd>1</kbd><span class="sv-hint-key"></span></div>' +
+            '        <div class="sv-hint-row"><kbd>W</kbd><span class="sv-hint-key"></span></div>' +
+            '        <div class="sv-hint-row"><kbd>H</kbd><span class="sv-hint-key"></span></div>' +
+            '        <div class="sv-hint-row"><kbd>M</kbd><span class="sv-hint-key"></span></div>' +
+            '        <div class="sv-hint-row"><kbd>F</kbd><span class="sv-hint-key"></span></div>' +
+            '        <div class="sv-hint-row"><kbd>←</kbd><kbd>→</kbd><span class="sv-hint-key"></span></div>' +
             '    </div>',
             '</div>',
             '<div class="sv-toolbar">',
@@ -604,10 +604,19 @@
         // Клик по фону — закрыть
         backdrop.addEventListener('click', close);
 
-        // Клик вне панели подсказок — закрыть её
-        modal.querySelector('.sv-hint').addEventListener('click', function (e) {
-            if (e.target.closest && e.target.closest('.sv-hint-panel')) return;
-            this.classList.remove('sv-hint-open');
+        // Кнопка подсказок и сама панель
+        var hintBox = modal.querySelector('.sv-hint');
+        var hintBtn = modal.querySelector('.sv-hint-btn');
+        hintBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            hintBox.classList.toggle('sv-hint-open');
+        });
+        // Клик вне открытой панели — закрыть её
+        modal.addEventListener('click', function (e) {
+            if (!hintBox.classList.contains('sv-hint-open')) return;
+            if (hintBox.contains(e.target)) return;
+            hintBox.classList.remove('sv-hint-open');
         });
 
         // Панорама мышью
