@@ -1,3 +1,18 @@
+# ===== Служебные инструменты проекта =====
+# Локальные скрипты: работа с медиа, генерация мета-тегов, sitemap.
+# На сайт не попадают, в репозиторий не нужны.
+tools/
+
+# ===== Служебные файлы проекта =====
+AGENTS.md
+CONTEXT.md
+.tmp/
+tmp/
+temp/
+*.log
+*.bak
+*.orig
+
 # ===== Медиа: постеры и блок-схемы =====
 #
 # Важно: файлы уже лежат в репозитории и публикуются на GitHub Pages,
@@ -9,24 +24,14 @@
 # у медиа-файлов выставлен флаг skip-worktree: файл остаётся в репозитории,
 # но git не реагирует на локальное удаление или правку.
 #
-#   поставить защиту:  git update-index --skip-worktree <файл>
-#   снять защиту:      git update-index --no-skip-worktree <файл>
+#   поставить защиту:  node tools/lock-media.js lock
+#   снять защиту:      node tools/lock-media.js unlock
 #
-# Готовые скрипты: K:\Сайты\media-lock.cmd и K:\Сайты\media-unlock.cmd
+# Готовые скрипты: tools\media-lock.cmd и tools\media-unlock.cmd
 #
 # Локальные исходники (оригиналы до сжатия) на сайт не выкладываются:
 assets/schemas/_originals/
 assets/posters/_originals/
-
-# ===== Служебные файлы проекта (локальные, в репозиторий не нужны) =====
-AGENTS.md
-CONTEXT.md
-.tmp/
-tmp/
-temp/
-*.log
-*.bak
-*.orig
 
 # ===== Личное и секретное =====
 .env
