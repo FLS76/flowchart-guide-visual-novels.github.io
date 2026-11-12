@@ -7,6 +7,7 @@
     var STORAGE_KEY = 'lang';
     var originals = new WeakMap();
     var attrOriginals = new WeakMap();
+    var metaOriginals = new WeakMap();
     var titleRu = null;
     var settings = window.SiteSettings || null;
 
@@ -342,6 +343,24 @@
         title.textContent = lang === 'ru' ? titleRu : translateTitle(titleRu);
     }
 
+    // Мета-теги для поисковиков: description, og:title, og:description,
+    // twitter:title, twitter:description. Английский вариант лежит в data-en.
+    function applyMeta(lang) {
+        var metas = document.querySelectorAll('meta[name="description"], meta[property="og:title"], meta[property="og:description"], meta[name="twitter:title"], meta[name="twitter:description"]');
+        for (var i = 0; i < metas.length; i++) {
+            var el = metas[i];
+            var en = el.getAttribute('data-en');
+            if (!en) continue;
+            var map = metaOriginals.get(el);
+            if (!map) {
+                map = {};
+                metaOriginals.set(el, map);
+            }
+            if (map.ru === undefined) map.ru = el.getAttribute('content') || '';
+            el.setAttribute('content', lang === 'en' ? en : map.ru);
+        }
+    }
+
     function updateButton(lang) {
         var btn = document.getElementById('langToggle');
         if (btn) {
@@ -361,6 +380,7 @@
         document.documentElement.lang = lang === 'en' ? 'en' : 'ru';
         applyTextNodes(lang);
         applyAttributes(lang);
+        applyMeta(lang);
         applyTitle(lang);
         updateButton(lang);
     }
