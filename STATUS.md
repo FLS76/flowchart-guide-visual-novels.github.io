@@ -26,6 +26,17 @@
 
 ## Изменено 2026-11-12
 
+- **SEO-мета-теги на всех 47 страницах.** `description`, `canonical`, `og:type/site_name/locale/title/description/url/image`, `twitter:card/title/description/image`, `theme-color`.
+  - Описания генерируются из данных страницы: название, разработчик, год, автор схемы, версия, язык.
+  - `hreflang` не ставится — язык переключается JS на одной странице, отдельных EN-URL нет.
+  - `i18n.js` переводит `description`, `og:title`, `og:description`, `twitter:*` при смене языка (английский вариант лежит в `data-en`).
+- **Графика:**
+  - `assets/og-image.jpg` 1200×630 — превью ссылки в мессенджерах (JPEG вместо PNG: 63 КБ вместо 870 КБ).
+  - `assets/favicon-16.png`, `favicon-32.png`, `apple-touch-icon.png` 180×180 — квадратные, из `logo.svg`. Старый `favicon.png` (183×123, не квадрат) удалён.
+  - og:image новеллы и её схем — постер новеллы (`assets/posters/<slug>.jpg`). Новая схема внутри новеллы og:image не меняет; новая новелла — свой постер.
+- **Topics репозитория:** `visual-novel`, `walkthrough`, `flowchart`, `guide`, `novel`, `eroge`.
+- **Discussions:** создано обсуждение «Спасибо и предложения» (категория Ideas) с закреплённым комментарием про реакции. Лайки встроенные: 👍 ❤️ 🎉 👀 под каждым комментарием.
+  - Категории и опросы через API не создаются — только вручную в браузере.
 - **Сайт выложен на GitHub Pages.** Адрес: `fls76.github.io/flowchart-guide-visual-novels.github.io/`.
   - Workflow `pages.yml` при первом запуске падал: в YAML-файле были JS-комментарии `//` вместо `#`. Исправлено, проверено `actionlint` (exit 0).
   - Домен в `sitemap.xml`, `robots.txt`, README и workflow приведён к фактическому.
