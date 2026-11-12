@@ -1,12 +1,12 @@
-// Публикация сайта на GitHub Pages
-//
-// Запуск: при пуше в ветку master.
-// Сборка: копирование файлов сайта в корень публикуемой ветки.
-// Результат: https://flowchart-guide-visual-novels.github.io/
-//
-// Если сборка не нужна (обычный статический сайт без Jekyll),
-// можно вместо этого workflow включить «Deploy from a branch»
-// в Settings → Pages.
+# Публикация сайта на GitHub Pages
+#
+# Запуск: при пуше в ветку master.
+# Сборка: копирование файлов сайта в корень публикуемой ветки.
+# Результат: https://flowchart-guide-visual-novels.github.io/
+#
+# Если сборка не нужна (обычный статический сайт без Jekyll),
+# можно вместо этого workflow включить «Deploy from a branch»
+# в Settings -> Pages.
 name: Deploy to GitHub Pages
 
 on:
