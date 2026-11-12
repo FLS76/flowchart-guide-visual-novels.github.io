@@ -8,34 +8,6 @@
 
 Пример: `novels/phoenix-wright/schema2/index.html` → `phoenix-wright-2.png`.
 
-## Какие файлы нужны сейчас
-
-| Файл | Страница | Новелла |
-|---|---|---|
-| `9-nine-1-1.png` | `novels/9-nine-1/schema1/` | 9 -Nine- Kokonotsu Kokonoka Kokonoiro |
-| `9-nine-2-1.png` | `novels/9-nine-2/schema1/` | 9 -Nine- Sorairo Sorauta Soranooto |
-| `amneya28-1.png` | `novels/amneya28/schema1/` | Амнея28: две вечности |
-| `angels-scaly-wings-1.png` | `novels/angels-scaly-wings/schema1/` | Angels with Scaly Wings |
-| `atri-1.png` | `novels/atri/schema1/` | ATRI -My Dear Moments- |
-| `ever17-1.png` | `novels/ever17/schema1/` | Ever17: Out of the Infinity |
-| `ginka-1.png` | `novels/ginka/schema1/` | GINKA |
-| `himawari-1.png` | `novels/himawari/schema1/` | Himawari |
-| `i-wani-hug-1.png` | `novels/i-wani-hug/schema1/` | I Wani Hug that Gator! |
-| `if-heart-wings-1.png` | `novels/if-heart-wings/schema1/` | If my heart had wings |
-| `neko-after-1.png` | `novels/neko-after/schema1/` | Nekopara After |
-| `neko-catboys-1.png` | `novels/neko-catboys/schema1/` | Nekopara: Catboys Paradise |
-| `neko-vol4-1.png` | `novels/neko-vol4/schema1/` | Nekopara Vol. 4 |
-| `phoenix-wright-1.png` | `novels/phoenix-wright/schema1/` | Phoenix Wright: Ace Attorney |
-| `phoenix-wright-2.png` | `novels/phoenix-wright/schema2/` | Phoenix Wright: Ace Attorney (v2) |
-| `phoenix-wright-justice-1.png` | `novels/phoenix-wright-justice/schema1/` | Phoenix Wright: Ace Attorney — Justice for All |
-| `phoenix-wright-trials-1.png` | `novels/phoenix-wright-trials/schema1/` | Phoenix Wright: Ace Attorney — Trials and Tribulations |
-| `remember11-1.png` | `novels/remember11/schema1/` | Remember11: The Age of Infinity |
-| `sharin-himawari-1.png` | `novels/sharin-himawari/schema1/` | Sharin no Kuni, Himawari no Shoujo |
-| `sharin-yuukyuu-1.png` | `novels/sharin-yuukyuu/schema1/` | Sharin no Kuni, Yuukyuu no Shounenshoujo |
-| `snoot-game-1.png` | `novels/snoot-game/schema1/` | Snoot Game |
-| `wanko-1.png` | `novels/wanko/schema1/` | Wanko to Kurasou |
-| `wolf-girl-1.png` | `novels/wolf-girl/schema1/` | Kemono Musume no Sodatekata |
-
 ## Если файла нет
 
 Страница схемы не показывает битую картинку, а выводит аккуратную плашку
@@ -45,16 +17,25 @@
 
 - PNG, оптимизированный (цель — до 1–2 МБ на схему).
 - Рекомендуемая ширина: 3000–5000 px, высота — по пропорции схемы.
-- Имя — строго по таблице выше, иначе страница не найдёт файл.
+- Имя — строго по правилу выше, иначе страница не найдёт файл.
 
-## Как добавить новую схему
+## Как добавить новую новеллу со схемой
 
-1. Положить файл в эту папку с нужным именем.
-2. Создать страницу `novels/<slug>/schemaN/index.html` — скопировать любую
-   готовую (например, `novels/wanko/schema1/index.html`) и поправить
-   название, подзаголовок, тексты и `src` картинки.
-3. Добавить новую страницу в `sitemap.xml` и в каталог на главной.
-4. `git add` + `git commit` + `git push` — GitHub Pages пересоберёт сайт.
+Всё делает скрипт `tools\add-novel.js` — он создаёт страницы, добавляет карточку
+на главную, генерирует мета-теги и sitemap.
+
+```
+node tools\add-novel.js --slug <slug> --title "Название" ^
+     --vndb v12345 --dev Разработчик --year 2024
+```
+
+Схема и постер должны уже лежать в папках под правильными именами:
+`assets\schemas\<slug>-1.png` и `assets\posters\<slug>.jpg`.
+
+Если нужна вторая схема для уже существующей новеллы — создайте
+`novels\<slug>\schema2\` копированием `schema1`, положите
+`assets\schemas\<slug>-2.png` и поправьте `src` и подзаголовок. Затем
+`node tools\gen-meta.js`, `node tools\gen-sitemap.js`.
 
 ## Как освободить место на компьютере
 
@@ -64,9 +45,12 @@
 | Задача | Что делать |
 |---|---|
 | Удалить картинки с диска | просто удалите файлы; `git status` останется чистым |
-| Заменить картинку новой версией | `K:\Сайты\media-unlock.cmd` → заменить файл → `git add` + `commit` → `K:\Сайты\media-lock.cmd` |
-| Добавить новую схему | положите файл сюда, `git add assets/schemas/<файл>.png` и закоммитьте (новые файлы под защиту не попадают) |
+| Заменить картинку новой версией | `tools\media-unlock.cmd` → заменить файл → `git add` + `commit` → `tools\media-lock.cmd` |
+| Добавить новую схему | положите файл сюда, `git add assets/schemas/<файл>.png`, закоммитьте, затем `tools\media-lock.cmd` |
+
+Новые файлы под защиту попадают только после `tools\media-lock.cmd` — до этого
+момента удаление такого файла с диска попадёт в следующий коммит. Скрипт
+`tools\publish.cmd` ставит защиту сам, перед `git push`.
 
 Оригиналы схем (до сжатия) держите в `assets/schemas/_originals/` — эта папка
 в репозиторий не попадает.
-
