@@ -79,6 +79,13 @@
 
 ---
 
+## Обратная связь
+
+- [Спасибо и предложения](https://github.com/FLS76/flowchart-guide-visual-novels.github.io/discussions/1) — сказать «Спасибо», попросить сделать ещё или указать на ошибку
+- [Какие схемы нужны?](https://github.com/FLS76/flowchart-guide-visual-novels.github.io/discussions/2) — предложить новеллу для блок-схемы
+
+---
+
 <div align="center">
 
 **FLS76** · [GitHub](https://github.com/FLS76) · [Square Faction](https://ru.squarefaction.com/member/u108729)
