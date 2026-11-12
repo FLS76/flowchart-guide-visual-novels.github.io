@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240" role="img" aria-label="Flowchart Guide">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b1740"/>
+      <stop offset="0.55" stop-color="#2b2557"/>
+      <stop offset="1" stop-color="#171334"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8fa4ff"/>
+      <stop offset="1" stop-color="#f79c1e"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="240" height="240" rx="52" fill="url(#bg)"/>
+
+  <!-- Блоки схемы -->
+  <g fill="none" stroke="url(#line)" stroke-width="7" stroke-linejoin="round" stroke-linecap="round">
+    <!-- верхний блок -->
+    <rect x="72" y="40" width="96" height="44" rx="8"/>
+    <!-- развилка -->
+    <path d="M120 84 v22"/>
+    <path d="M120 106 h-44 v14"/>
+    <path d="M120 106 h44 v14"/>
+    <!-- нижние блоки -->
+    <rect x="34" y="120" width="84" height="40" rx="8"/>
+    <rect x="122" y="120" width="84" height="40" rx="8"/>
+    <!-- хвост -->
+    <path d="M120 160 v22"/>
+    <path d="M120 182 h-30"/>
+    <path d="M120 182 h30"/>
+  </g>
+
+  <!-- точки на развилках -->
+  <circle cx="120" cy="106" r="6" fill="#f79c1e"/>
+  <circle cx="120" cy="182" r="5" fill="#8fa4ff"/>
+</svg>
