@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://flowchart-guide-visual-novels.github.io/sitemap.xml
+Sitemap: https://fls76.github.io/flowchart-guide-visual-novels.github.io/sitemap.xml

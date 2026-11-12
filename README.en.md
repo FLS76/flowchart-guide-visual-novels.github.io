@@ -10,7 +10,7 @@ A static site published on GitHub Pages.
 
 [![License](https://img.shields.io/github/license/FLS76/flowchart-guide-visual-novels.github.io?label=license)](LICENSE)
 
-[Русский](README.md) · Site: `flowchart-guide-visual-novels.github.io`
+[Русский](README.md) · Site: `fls76.github.io/flowchart-guide-visual-novels.github.io`
 
 </div>
 
@@ -42,7 +42,7 @@ Every chart page includes:
 
 ## How to use
 
-1. Open the [site](https://flowchart-guide-visual-novels.github.io) or the local `index.html`.
+1. Open the [site](https://fls76.github.io/flowchart-guide-visual-novels.github.io) or the local `index.html`.
 2. Choose the **Completed** tab.
 3. Click the poster of the novel whose flowchart you want to see.
 4. Open the flowchart — click the image to view it full screen.
